@@ -1,0 +1,43 @@
+{% extends 'portfolio/base.html' %}
+{% load static %}
+{% block top %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Elman Blog | post</title>
+{% endblock %}
+
+{% block header%}
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url({% static 'portfolio/img/post-bg.jpg'%})">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+            <h1>{{ object.title }}</h1>
+            <span class="meta">نوشته شده توسط
+              <a href="#">{{ object.postadby }}</a>
+              در {{ object.date }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+{% endblock %}
+
+{% block main %}
+  <!-- Post Content -->
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto text-justify">
+          {{ object.paragraph|linebreaks }}
+        </div>
+      </div>
+    </div>
+  </article>
+{% endblock %}

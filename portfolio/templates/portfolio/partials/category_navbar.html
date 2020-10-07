@@ -1,0 +1,39 @@
+{% load static %}
+
+<link href="{% static 'portfolio/css/rtl.css' %}">
+
+<div class="collapse navbar-collapse" id="navbarResponsive">
+    <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'home' %}">صفحه اصلی</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'posts' %}">پست ها</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'about' %}">درباره ما</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'contact' %}">تماس با ما</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'login' %}">ورود | ثبت نام</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="">موضوعات</a>
+            <ul>
+                {% for x in category %}
+                    {% if x.parent == None %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'category' x.slug  %}">{{ x.title }}</a>
+                        {% if x.children.all %}
+                            {% include 'portfolio/partials/category_loop.html' %}
+                        {% endif %}
+                    </li>
+                    {% endif %}
+
+                {% endfor %}
+            </ul>
+        </li>
+    </ul>
+</div>

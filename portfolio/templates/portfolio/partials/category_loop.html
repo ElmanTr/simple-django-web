@@ -1,0 +1,10 @@
+<ul>
+    {% for x in x.children.all %}
+        <li>
+            <a class="nav-link" href="{% url 'category' x.slug  %}">{{ x.title }}</a>
+            {% if x.children.all %}
+                {% include 'portfolio/partials/category_loop.html' %}
+            {% endif %}
+        </li>
+    {% endfor %}
+ </ul>
