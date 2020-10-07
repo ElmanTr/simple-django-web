@@ -3,7 +3,7 @@ from django.shortcuts import render , get_object_or_404
 from django.core.paginator import Paginator
 from .models import Data , Category
 
-# Create your views here.
+# views
 
 #def home(request):
 #    context = {
