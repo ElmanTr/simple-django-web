@@ -1,0 +1,63 @@
+{% extends 'portfolio/base.html' %}
+{% load static %}
+{% block top %}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+{% block page_title %}
+{% endblock %}
+{% endblock %}
+
+{% block header %}
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url({% static 'portfolio/img/home-bg.jpg' %})">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          {% block site_head %}
+          {% endblock %}
+        </div>
+      </div>
+    </div>
+  </header>
+{% endblock %}
+
+{% block main %}
+
+<!-- Main Content -->
+{% for x in project %}
+<div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="post-preview">
+          <a href="{% url 'posts' %}{{ x.slug }}">
+            <h2 style="font-family: 'B Titr';margin: 30px">
+                {{ x.title }}
+            </h2>
+            <h3 style="font-family: 'Sahel';margin: 30px">
+                {{ x.paragraph|truncatewords:30 }}
+            </h3>
+          </a>
+          <p class="post-meta">نوشته شده توسط
+            <a href="#">{{ x.postadby }}</a>
+              در {{ x.date }}</p>
+
+        </div>
+
+        <hr>
+      </div>
+    </div>
+</div>
+{% endfor %}
+
+    <!-- Pager -->
+    <div class="container">
+    {% block pager %}
+    {% endblock %}
+    </div>
+
+<br><br><br>
+
+{% endblock %}

@@ -1,78 +1,25 @@
-{% extends 'portfolio/base.html' %}
-{% load static %}
-{% block top %}
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
+{% extends 'portfolio/list.html' %}
 
-  <title>Elman Blog | post</title>
+{% block page_title %}
+<title>Elman Blog | Posts </title>
 {% endblock %}
 
-
-
-{% block header%}
-  <!-- Page Header -->
-  <header class="masthead" style="background-image: url({% static 'portfolio/img/home-bg.jpg' %})">
-    <div class="overlay"></div>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
-          <div class="site-heading">
-            <h1>پست ها</h1>
-            <span class="subheading">تمام پست های وبلاگ</span>
-          </div>
-        </div>
-      </div>
+{% block site_head %}
+    <div class="site-heading">
+        <h1 style="font-family: 'B Titr'">پست ها</h1>
+        <br>
+        <span class="subheading" style="font-family: 'B Titr'">تمامی پست های سایت!</span>
     </div>
-  </header>
 {% endblock %}
 
+{% block pager %}
+<div class="clearfix pager-botton">
+    {% if project.has_previous %}
+        <a class="btn btn-primary float-right" href="{% url 'posts' %}?page={{ project.previous_page_number }}" style="margin: 10px"> &rarr; پست های جدید تر </a>
+    {% endif %}
 
-{% block main %}
-
-{% for x in project %}
-
-<div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto">
-        <div class="post-preview">
-          <a href="{% url 'postsdetail' x.slug %}">
-            <h2 class="post-title">
-                {{ x.title }}
-            </h2>
-            <h3 class="post-subtitle">
-                {{ x.paragraph|truncatewords:30 }}
-            </h3>
-          </a>
-          <p class="post-meta">نوشته شده توسط
-            <a href="#">{{ x.postadby }}</a>
-              در {{ x.date }}</p>
-        </div>
-
-        <hr>
-      </div>
-    </div>
-
-{% endfor %}
-
-<!-- Pager -->
-    <div class="clearfix pager-botton">
-
-        {% if project.has_previous %}
-            <a class="btn btn-primary float-right" href="{% url 'posts' %}?page={{ project.previous_page_number }}" style="margin: 10px"> &rarr; پست های جدید تر </a>
-        {% endif %}
-
-        <a class="btn btn-primary" href="{% url 'posts' %}?page=1" style="margin: 10px;border-radius: 20%"> 1 </a>
-        <a class="btn btn-primary" href="{% url 'posts' %}?page=2" style="margin: 10px;border-radius: 20%"> 2 </a>
-        <a class="btn btn-primary" href="{% url 'posts' %}?page=3" style="margin: 10px;border-radius: 20%"> 3 </a>
-
-        {% if project.has_next %}
-            <a class="btn btn-primary float-left" href="{% url 'posts' %}?page={{ project.next_page_number }}" style="margin: 10px"> پست های قدیمی تر &larr;</a>
-        {% endif %}
-
-    </div>
+    {% if project.has_next %}
+        <a class="btn btn-primary float-left" href="{% url 'posts' %}?page={{ project.next_page_number }}" style="margin: 10px"> پست های قدیمی تر &larr;</a>
+    {% endif %}
 </div>
-
-<br><br><br>
 {% endblock %}
