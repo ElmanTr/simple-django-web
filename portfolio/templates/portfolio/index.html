@@ -68,7 +68,7 @@
             </h3>
           </a>
           <p class="post-meta">نوشته شده توسط
-            <a href="#">{{ x.postadby }}</a>
+            <a href="{% url 'author' x.author %}">{{ x.author.get_full_name }}</a>
               در {{ x.date }}</p>
             <div>
                 {% for x in object_list.category.all %}

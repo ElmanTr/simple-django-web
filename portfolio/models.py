@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -17,12 +18,12 @@ class Category(models.Model):
         return self.title
 
 class Data(models.Model):
+    author = models.ForeignKey(User, null=True, on_delete=models.SET_NULL, related_name='projects',verbose_name='نویسنده')
     slug = models.SlugField(max_length=100,unique=True,default='',verbose_name="آدرس مقاله")
     title = models.CharField(max_length=100, verbose_name="عنوان مقاله")
     category = models.ManyToManyField(Category,blank=True, verbose_name="دسته بندی", related_name="projects")
     paragraph = models.TextField(default="",verbose_name="محتوا مقاله")
     date = models.DateTimeField(verbose_name="زمان انتشار مقاله")
-    postadby = models.CharField(max_length=100,verbose_name="نویسنده")
 
     class Meta:
         verbose_name = "مقاله"

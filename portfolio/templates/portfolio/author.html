@@ -1,0 +1,25 @@
+{% extends 'portfolio/list.html' %}
+
+{% block page_title %}
+<title>Elman Blog | نویسنده </title>
+{% endblock %}
+
+{% block site_head %}
+    <div class="site-heading">
+        <h1 style="font-family: 'B Titr'"> نویسنده : {{ author.get_full_name }}</h1>
+        <br>
+        <span class="subheading" style="font-family: 'B Titr'"></span>
+    </div>
+{% endblock %}
+
+{% block pager %}
+<div class="clearfix pager-botton">
+    {% if page_obj.has_previous %}
+        <a class="btn btn-primary float-right" href="{% url 'author' author.username %}?page={{ page_obj.previous_page_number }}" style="margin: 10px"> &rarr; پست های جدید تر </a>
+    {% endif %}
+
+    {% if page_obj.has_next %}
+        <a class="btn btn-primary float-left" href="{% url 'author' author.username %}?page={{ page_obj.next_page_number }}" style="margin: 10px"> پست های قدیمی تر &larr;</a>
+    {% endif %}
+</div>
+{% endblock %}

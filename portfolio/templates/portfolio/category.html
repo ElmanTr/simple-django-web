@@ -14,12 +14,12 @@
 
 {% block pager %}
 <div class="clearfix pager-botton">
-    {% if project.has_previous %}
-        <a class="btn btn-primary float-right" href="{% url 'category' category.slug %}?page={{ project.previous_page_number }}" style="margin: 10px"> &rarr; پست های جدید تر </a>
+    {% if page_obj.has_previous %}
+        <a class="btn btn-primary float-right" href="{% url 'category' category.slug %}?page={{ page_obj.previous_page_number }}" style="margin: 10px"> &rarr; پست های جدید تر </a>
     {% endif %}
 
-    {% if project.has_next %}
-        <a class="btn btn-primary float-left" href="{% url 'category' category.slug %}?page={{ project.next_page_number }}" style="margin: 10px"> پست های قدیمی تر &larr;</a>
+    {% if page_obj.has_next %}
+        <a class="btn btn-primary float-left" href="{% url 'category' category.slug %}?page={{ page_obj.next_page_number }}" style="margin: 10px"> پست های قدیمی تر &larr;</a>
     {% endif %}
 </div>
 {% endblock %}
