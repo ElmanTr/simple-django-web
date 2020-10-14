@@ -1,6 +1,6 @@
 from django.views.generic import ListView , DetailView
 from django.contrib.auth.models import User
-from django.shortcuts import render , get_object_or_404
+from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
 from .models import Data , Category
 
@@ -51,10 +51,6 @@ class PostList(ListView):
 
 def contact(request):
     return render(request, 'portfolio/contact.html')
-
-def login(request):
-    email = request.GET.get('email')
-    return render(request, 'portfolio/login.html', {'email':email})
 
 def base(request):
     return render(request, 'portfolio/base.html')

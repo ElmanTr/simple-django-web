@@ -1,0 +1,11 @@
+{% extends 'registration/base.html' %}
+{% load static %}
+{% block title %}
+    افزودن مقاله
+{% endblock %}
+{% block main %}
+    <form method="post">{% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-success">ارسال مقاله</button>
+    </form>
+{% endblock %}

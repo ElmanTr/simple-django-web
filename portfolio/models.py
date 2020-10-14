@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils import timezone
+from django.urls import reverse
 
 # Create your models here.
 
@@ -23,7 +25,7 @@ class Data(models.Model):
     title = models.CharField(max_length=100, verbose_name="عنوان مقاله")
     category = models.ManyToManyField(Category,blank=True, verbose_name="دسته بندی", related_name="projects")
     paragraph = models.TextField(default="",verbose_name="محتوا مقاله")
-    date = models.DateTimeField(verbose_name="زمان انتشار مقاله")
+    date = models.DateTimeField(default=timezone.now,verbose_name="زمان انتشار مقاله")
 
     class Meta:
         verbose_name = "مقاله"
@@ -32,3 +34,11 @@ class Data(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse("account:home")
+
+    def category_to_str(self):
+        return " , ".join([category.title for category in self.category.all()])
+    category_to_str.short_description = 'دسته بندی'
+
