@@ -37,7 +37,7 @@
                 {{ x.title }}
             </h2>
             <h3 style="font-family: 'Sahel';margin: 30px">
-                {{ x.paragraph|truncatewords:30 }}
+                {{ x.paragraph|striptags|truncatewords:30 }}
             </h3>
           </a>
           <p class="post-meta">نوشته شده توسط

@@ -1,6 +1,6 @@
 from django.contrib.auth import views
 from django.urls import path
-from .views import ArticleList , ArticleCreate
+from .views import ArticleList, ArticleCreate
 
 app_name = "account"
 

@@ -4,12 +4,13 @@
     لیست مقالات
 {% endblock %}
 {% block main %}
-        <div class="row">
+        <div class="card card-primary" style="padding: 2%;margin-right: 4%;margin-left: 4%;">
           <div class="col-12">
               <!-- /.card-header -->
               <div class="card-body table-responsive p-0">
                 <table class="table table-hover">
-                  <thead>
+                    {% if object_list.count > 0 %}
+                    <thead>
                     <tr>
                       <th>عنوان مقاله</th>
                       <th>خلاصه</th>
@@ -18,21 +19,25 @@
                       <th>زمان انتشار</th>
                       <th>وضعیت</th>
                     </tr>
-                  </thead>
-                  <tbody>
+                    </thead>
+                    <tbody>
                     {% for x in object_list %}
                         <tr>
                             <td>{{ x.title }}</td>
-                            <td>{{ x.paragraph|truncatewords:30 }}</td>
+                            <td>{{ x.paragraph|striptags|truncatewords:30 }}</td>
                             <td>{{ x.category_to_str }}</td>
                             <td>{{ x.author.get_full_name }}</td>
                             <td>{{ x.date }}</td>
                             <td>
-                                <a target="_blank" class="badge badge-primary" href="{% url 'postsdetail'  x.slug %}">نمایش مقاله در سایت</a>
+                                  <a target="_blank" class="badge badge-primary" href="{% url 'postsdetail'  x.slug %}">نمایش مقاله در سایت</a>
                             </td>
                         </tr>
                     {% endfor %}
-                  </tbody>
+                    {% endif %}
+                    {% if object_list.count == 0 %}
+                        <h5>شما هیچ مقاله ای ندارید!</h5>
+                    {% endif %}
+                    </tbody>
                 </table>
               </div>
               <!-- /.card-body -->

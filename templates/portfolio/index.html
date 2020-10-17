@@ -54,6 +54,7 @@
     <span class="sr-only">Next</span>
   </a>
 </div>
+
 {% for x in object_list %}
 <div class="container">
     <div class="row">
@@ -64,7 +65,7 @@
                 {{ x.title }}
             </h2>
             <h3 style="margin: 30px">
-                {{ x.paragraph|truncatewords:30 }}
+                {{ x.paragraph|striptags|truncatewords:30 }}
             </h3>
           </a>
           <p class="post-meta">نوشته شده توسط
