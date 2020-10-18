@@ -1,0 +1,13 @@
+{% extends 'registration/base.html' %}
+{% load static %}
+{% block title %}
+    حذف مقاله
+{% endblock %}
+{% block main %}
+    <form method="post">{% csrf_token %}
+        <div class="card card-primary col-md-7 mx-auto" style="padding: 3%;margin-right: 5%;margin-left: 5%;">
+                <p>آیا شما از حذف مقاله {{ object }} اطمینان دارید؟</p>
+                <input type="submit" value="حذف مقاله" class="btn btn-danger">
+        </div>
+    </form>
+{% endblock %}

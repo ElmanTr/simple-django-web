@@ -23,13 +23,16 @@
                     <tbody>
                     {% for x in object_list %}
                         <tr>
-                            <td>{{ x.title }}</td>
+                            <td><a href="{% url 'account:article-update' x.pk %}">{{ x.title }}</a></td>
                             <td>{{ x.paragraph|striptags|truncatewords:30 }}</td>
                             <td>{{ x.category_to_str }}</td>
                             <td>{{ x.author.get_full_name }}</td>
                             <td>{{ x.date }}</td>
                             <td>
-                                  <a target="_blank" class="badge badge-primary" href="{% url 'postsdetail'  x.slug %}">نمایش مقاله در سایت</a>
+                                <a target="_blank" class="badge badge-primary" href="{% url 'postsdetail'  x.slug %}">نمایش مقاله در سایت</a>
+                                {% if user.is_superuser %}
+                                <a class="badge text-danger" href="{% url 'account:article-delete' x.pk %}">حذف مقاله</a>
+                                {% endif %}
                             </td>
                         </tr>
                     {% endfor %}
