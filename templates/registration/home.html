@@ -23,15 +23,23 @@
                     <tbody>
                     {% for x in object_list %}
                         <tr>
-                            <td><a href="{% url 'account:article-update' x.pk %}">{{ x.title }}</a></td>
+                            {% if not user.is_superuser and x.status == 'p' %}
+                                <td>{{ x.title }}</td>
+                            {% else %}
+                                <td><a href="{% url 'account:article-update' x.pk %}">{{ x.title }}</a></td>
+                            {% endif %}
                             <td>{{ x.paragraph|striptags|truncatewords:30 }}</td>
                             <td>{{ x.category_to_str }}</td>
                             <td>{{ x.author.get_full_name }}</td>
                             <td>{{ x.date }}</td>
                             <td>
-                                <a target="_blank" class="badge badge-primary" href="{% url 'postsdetail'  x.slug %}">نمایش مقاله در سایت</a>
+                                {% if x.status == 'p' %}
+                                    <a target="_blank" class="badge badge-primary" href="{% url 'postsdetail'  x.slug %}">نمایش مقاله در سایت</a>
+                                {% else %}
+                                    <p class="badge badge-danger" href="{% url 'postsdetail'  x.slug %}">پیش نویس</p>
+                                {% endif %}
                                 {% if user.is_superuser %}
-                                <a class="badge text-danger" href="{% url 'account:article-delete' x.pk %}">حذف مقاله</a>
+                                    <a class="badge text-danger" href="{% url 'account:article-delete' x.pk %}" style="margin-top: 15px">حذف مقاله</a>
                                 {% endif %}
                             </td>
                         </tr>

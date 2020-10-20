@@ -28,7 +28,7 @@
                with font-awesome or any other icon font library -->
           <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-copy"></i>
+              <i class="fas fa-copy"></i>
               <p>
                 مقالات
                 <i class="right fas fa-angle-left"></i>
@@ -36,13 +36,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{% url 'account:home' %}" class="nav-link active">
+                <a href="{% url 'account:home' %}" class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}">
                   <i class="fa fa-list nav-icon"></i>
                   <p>لیست مقالات</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{% url 'account:article-create' %}" class="nav-link">
+                <a href="{% url 'account:article-create' %}" class="nav-link {% if request.resolver_match.url_name == 'article-create' %}active{% endif %}">
                   <i class="fa fa-edit nav-icon"></i>
                   <p>افزودن مقاله</p>
                 </a>
@@ -51,11 +51,17 @@
           </li>
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+              <i class="fa fa-user-circle"></i>
               <p>
-                پروفایل
+                  پروفایل
               </p>
             </a>
+          </li>
+          <li class="nav-item">
+              <a href="{% url 'account:logout' %}" class="nav-link">
+                  <i class="fas fa-sign-out-alt"></i>
+                  <p>خروج</p>
+              </a>
           </li>
         </ul>
       </nav>

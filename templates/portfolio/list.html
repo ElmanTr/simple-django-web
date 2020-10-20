@@ -28,28 +28,30 @@
 
 <!-- Main Content -->
 {% for x in object_list %}
-<div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto">
-        <div class="post-preview">
-          <a href="{% url 'posts' %}{{ x.slug }}">
-            <h2 style="font-family: 'B Titr';margin: 30px">
-                {{ x.title }}
-            </h2>
-            <h3 style="font-family: 'Sahel';margin: 30px">
-                {{ x.paragraph|striptags|truncatewords:30 }}
-            </h3>
-          </a>
-          <p class="post-meta">نوشته شده توسط
-            <a href="{% url 'author' x.author %}">{{ x.author.get_full_name }}</a>
-              در {{ x.date }}</p>
+    {% if x.status == 'p' %}
+    <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="post-preview">
+              <a href="{% url 'posts' %}{{ x.slug }}">
+                <h2 style="font-family: 'B Titr';margin: 30px">
+                    {{ x.title }}
+                </h2>
+                <h3 style="font-family: 'Sahel';margin: 30px">
+                    {{ x.paragraph|striptags|truncatewords:30 }}
+                </h3>
+              </a>
+              <p class="post-meta">نوشته شده توسط
+                <a href="{% url 'author' x.author %}">{{ x.author.get_full_name }}</a>
+                  در {{ x.date }}</p>
 
+            </div>
+
+            <hr>
+          </div>
         </div>
-
-        <hr>
-      </div>
     </div>
-</div>
+    {% endif %}
 {% endfor %}
 
     <!-- Pager -->

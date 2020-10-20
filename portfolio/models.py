@@ -20,12 +20,17 @@ class Category(models.Model):
         return self.title
 
 class Data(models.Model):
+    STATUS_CHOICES = (
+        ('d', 'پیش نویس'),
+        ('p', 'منتشر شده'),
+    )
     author = models.ForeignKey(User, null=True, on_delete=models.SET_NULL, related_name='projects',verbose_name='نویسنده')
     slug = models.SlugField(max_length=100,unique=True,default='',verbose_name="آدرس مقاله")
     title = models.CharField(max_length=100, verbose_name="عنوان مقاله")
     category = models.ManyToManyField(Category,blank=True, verbose_name="دسته بندی", related_name="projects")
     paragraph = models.TextField(default="",verbose_name="محتوا مقاله")
     date = models.DateTimeField(default=timezone.now,verbose_name="زمان انتشار مقاله")
+    status = models.CharField(max_length=1,choices=STATUS_CHOICES,default='d',verbose_name="وضعیت")
 
     class Meta:
         verbose_name = "مقاله"
