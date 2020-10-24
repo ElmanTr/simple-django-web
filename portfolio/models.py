@@ -3,6 +3,12 @@ from account.models import User
 from django.utils import timezone
 from django.urls import reverse
 
+# My managers
+class ArticleManager(models.Manager):
+    def published(self):
+        return self.filter(status='p')
+
+
 # Create your models here.
 
 class Category(models.Model):
@@ -23,6 +29,7 @@ class Data(models.Model):
     STATUS_CHOICES = (
         ('d', 'پیش نویس'),
         ('p', 'منتشر شده'),
+        ('i', 'در حال بررسی'),
     )
     author = models.ForeignKey(User, null=True, on_delete=models.SET_NULL, related_name='projects',verbose_name='نویسنده')
     slug = models.SlugField(max_length=100,unique=True,default='',verbose_name="آدرس مقاله")
@@ -47,3 +54,14 @@ class Data(models.Model):
         return " , ".join([category.title for category in self.category.all()])
     category_to_str.short_description = 'دسته بندی'
 
+    objects = ArticleManager()
+
+
+class SlideImage(models.Model):
+    image = models.ImageField(upload_to='media')
+    position = models.IntegerField(unique=True,verbose_name="جایگاه")
+
+    class Meta:
+        verbose_name = "اسلاید"
+        verbose_name_plural = "اسلاید ها"
+        ordering = ['position']

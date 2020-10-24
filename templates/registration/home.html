@@ -10,42 +10,48 @@
               <div class="card-body table-responsive p-0">
                 <table class="table table-hover">
                     {% if object_list.count > 0 %}
-                    <thead>
-                    <tr>
-                      <th>عنوان مقاله</th>
-                      <th>خلاصه</th>
-                      <th>دسته بندی</th>
-                      <th>نویسنده</th>
-                      <th>زمان انتشار</th>
-                      <th>وضعیت</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {% for x in object_list %}
+                        <thead>
                         <tr>
-                            {% if not user.is_superuser and x.status == 'p' %}
-                                <td>{{ x.title }}</td>
-                            {% else %}
-                                <td><a href="{% url 'account:article-update' x.pk %}">{{ x.title }}</a></td>
-                            {% endif %}
-                            <td>{{ x.paragraph|striptags|truncatewords:30 }}</td>
-                            <td>{{ x.category_to_str }}</td>
-                            <td>{{ x.author.get_full_name }}</td>
-                            <td>{{ x.date }}</td>
-                            <td>
-                                {% if x.status == 'p' %}
-                                    <a target="_blank" class="badge badge-primary" href="{% url 'postsdetail'  x.slug %}">نمایش مقاله در سایت</a>
-                                {% else %}
-                                    <p class="badge badge-danger" href="{% url 'postsdetail'  x.slug %}">پیش نویس</p>
-                                {% endif %}
-                                {% if user.is_superuser %}
-                                    <a class="badge text-danger" href="{% url 'account:article-delete' x.pk %}" style="margin-top: 15px">حذف مقاله</a>
-                                {% endif %}
-                            </td>
+                          <th>عنوان مقاله</th>
+                          <th>خلاصه</th>
+                          <th>دسته بندی</th>
+                          <th>نویسنده</th>
+                          <th>زمان انتشار</th>
+                          <th>وضعیت</th>
                         </tr>
-                    {% endfor %}
-                    {% endif %}
-                    {% if object_list.count == 0 %}
+                        </thead>
+                        <tbody>
+                        {% for x in object_list %}
+                            <tr>
+                                {% if not user.is_superuser and x.status in 'pi'|make_list %}
+                                    <td>{{ x.title }}</td>
+                                {% else %}
+                                    <td><a href="{% url 'account:article-update' x.pk %}">{{ x.title }}</a></td>
+                                {% endif %}
+                                <td>{{ x.paragraph|striptags|truncatewords:30 }}</td>
+                                <td>{{ x.category_to_str }}</td>
+                                <td>{{ x.author.get_full_name }}</td>
+                                <td>{{ x.date }}</td>
+                                <td>
+                                    {% if x.status == 'p' %}
+                                        <p class="badge badge-success">منتشر شده</p>
+                                        <a target="_blank" class="badge badge-primary" href="{% url 'postsdetail'  x.slug %}">نمایش در سایت</a>
+                                    {% elif x.status == 'i' %}
+                                        <p class="badge" style="background: #ffd400">در حال بررسی</p>
+                                        {% if user.is_superuser %}
+                                            <a target="_blank" class="badge badge-secondary" href="{% url 'postspreview'  x.pk %}">پیش نمایش در سایت</a>
+                                        {% endif %}
+                                    {% else %}
+                                        <p class="badge badge-danger">پیش نویس</p>
+                                        <a target="_blank" class="badge badge-secondary" href="{% url 'postspreview'  x.pk %}">پیش نمایش در سایت</a>
+                                    {% endif %}
+                                    {% if user.is_superuser %}
+                                        <a class="badge text-danger" href="{% url 'account:article-delete' x.pk %}" style="margin-top: 15px">حذف مقاله</a>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    {% else %}
                         <h5>شما هیچ مقاله ای ندارید!</h5>
                     {% endif %}
                     </tbody>

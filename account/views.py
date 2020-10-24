@@ -1,8 +1,8 @@
 #from django.shortcuts import render
 #from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .mixins import FieldsMixin , FormValidMixin , AuthorAccessMixin , SuperUserAccessMixin
-from django.views.generic import ListView, CreateView, UpdateView , DeleteView
+from .mixins import FieldsMixin, FormValidMixin, AuthorAccessMixin, SuperUserAccessMixin
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from portfolio.models import Data
 from django.urls import reverse_lazy
 

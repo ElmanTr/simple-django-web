@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'portfolio.apps.PortfolioConfig',
     'account.apps.AccountConfig',
     'widget_tweaks',
-    'crispy_forms'
+    'crispy_forms',
+    'django_render_partial',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -135,6 +136,6 @@ STATICFILES_DIRS = [
 ]
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 AUTH_USER_MODEL='account.User'

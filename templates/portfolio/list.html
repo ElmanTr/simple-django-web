@@ -28,7 +28,7 @@
 
 <!-- Main Content -->
 {% for x in object_list %}
-    {% if x.status == 'p' %}
+
     <div class="container">
         <div class="row">
           <div class="col-lg-8 col-md-10 mx-auto">
@@ -44,14 +44,18 @@
               <p class="post-meta">نوشته شده توسط
                 <a href="{% url 'author' x.author %}">{{ x.author.get_full_name }}</a>
                   در {{ x.date }}</p>
-
+                    <div>
+                        {% for cat in object_list.category.all %}
+                            <a href="#">#{{ cat.title }}</a>
+                        {% endfor %}
+                    </div>
             </div>
 
             <hr>
           </div>
         </div>
     </div>
-    {% endif %}
+
 {% endfor %}
 
     <!-- Pager -->

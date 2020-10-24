@@ -1,5 +1,6 @@
 from django import template
 from ..models import Category
+from account.models import User
 
 register = template.Library()
 
@@ -10,5 +11,5 @@ def title():
 @register.inclusion_tag("portfolio/partials/category_navbar.html")
 def category_navbar():
     return {
-        "category": Category.objects.all()
+        "category": Category.objects.all(),
     }

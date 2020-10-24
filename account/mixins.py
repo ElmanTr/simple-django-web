@@ -6,7 +6,7 @@ class FieldsMixin():
     def dispatch(self,request,*args,**kwargs):
         if request.user.is_superuser:
             self.fields = [
-                "title","author","paragraph","slug","category","date","status"
+                "title", "author", "paragraph", "slug", "category", "date", "status"
             ]
         elif request.user.is_author:
             self.fields = [
@@ -28,10 +28,10 @@ class FormValidMixin():
 class AuthorAccessMixin():
     def dispatch(self,request,pk,*args,**kwargs):
         article = get_object_or_404(Data,pk=pk)
-        if article.author == request.user or request.user.is_superuser:
+        if article.author == request.user and article.status == 'd' or request.user.is_superuser:
             return super().dispatch(request, *args, **kwargs)
         else:
-            raise Http404("You are not author of this article !!!")
+            raise Http404("You can not see this page :(")
 
 class SuperUserAccessMixin():
     def dispatch(self,request,*args,**kwargs):
