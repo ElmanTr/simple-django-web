@@ -5,6 +5,8 @@ from .mixins import FieldsMixin, FormValidMixin, AuthorAccessMixin, SuperUserAcc
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from portfolio.models import Data
 from django.urls import reverse_lazy
+from .models import User
+from .forms import ProfileForms
 
 # Create your views here.
 
@@ -29,3 +31,19 @@ class ArticleDelete(SuperUserAccessMixin,DeleteView):
     model = Data
     success_url = reverse_lazy('account:home')
     template_name = "registration/confirm_delete.html"
+
+class Profile(UpdateView):
+    model = User
+    template_name = "registration/profile.html"
+    success_url = reverse_lazy('account:profile')
+    form_class = ProfileForms
+
+    def get_object(self):
+        return User.objects.get(pk=self.request.user.pk)
+
+    def get_form_kwargs(self):
+        kwargs = super(Profile, self).get_form_kwargs()
+        kwargs.update({
+            'user': self.request.user
+        })
+        return kwargs

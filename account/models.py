@@ -8,11 +8,14 @@ class User(AbstractUser):
     special_user = models.DateTimeField(default=timezone.now,verbose_name='کاربر ویژه تا')
 
     def is_special_user(self):
-        if self.is_superuser == False :
-            if self.special_user > timezone.now() :
-                return True
+        if self.is_superuser == False:
+            if self.is_author == False:
+                if self.special_user > timezone.now():
+                    return True
+                else:
+                    return False
             else:
-                return False
+                return True
         else:
             return True
     is_special_user.boolean = True

@@ -2,6 +2,7 @@ from django.db import models
 from account.models import User
 from django.utils import timezone
 from django.urls import reverse
+from django.utils.html import format_html
 
 # My managers
 class ArticleManager(models.Manager):
@@ -37,6 +38,7 @@ class Data(models.Model):
     category = models.ManyToManyField(Category,blank=True, verbose_name="دسته بندی", related_name="projects")
     paragraph = models.TextField(default="",verbose_name="محتوا مقاله")
     date = models.DateTimeField(default=timezone.now,verbose_name="زمان انتشار مقاله")
+    is_special = models.BooleanField(default=False,verbose_name="مقاله ویژه")
     status = models.CharField(max_length=1,choices=STATUS_CHOICES,default='d',verbose_name="وضعیت")
 
     class Meta:
@@ -47,6 +49,7 @@ class Data(models.Model):
     def __str__(self):
         return self.title
 
+    # برای ریدایرکت کردن
     def get_absolute_url(self):
         return reverse("account:home")
 
@@ -65,3 +68,7 @@ class SlideImage(models.Model):
         verbose_name = "اسلاید"
         verbose_name_plural = "اسلاید ها"
         ordering = ['position']
+
+    def image_tag(self):
+        return format_html("<img style='width:180px;height:130px;border-radius:10px' src='{}'>".format(self.image.url))
+    image_tag.short_description = 'عکس'

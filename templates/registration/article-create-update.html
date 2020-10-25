@@ -30,6 +30,7 @@
                     {{ form.date|as_crispy_field }}
                 </div>
             </div>
+
         {% if user.is_superuser %}
             <div class="form-row">
                 <div class="form-group col-md-5 mb-0">
@@ -37,6 +38,11 @@
                 </div>
             </div>
         {% endif %}
+            <div class="form-row">
+                <div class="form-group col-md-5 mb-0">
+                    {{ form.is_special|as_crispy_field }}
+                </div>
+            </div>
             <div>
             <button class="btn btn-success" type="submit">ارسال مقاله</button>
             {% if user.is_superuser and request.resolver_match.kwargs.pk %}

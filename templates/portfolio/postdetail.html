@@ -35,7 +35,15 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto text-justify">
-          {{ object.paragraph|safe }}
+            {% if object.is_special %}
+                {% if user.is_authenticated and user.is_special_user or user == object.author or user.is_superuser %}
+                    {{ object.paragraph|safe }}
+                {% else %}
+                    <p> این مقاله ویژه است ! برای مشاهده آن همین حالا  <a  href="#" class="special_article">اشتراک ویژه</a>  تهیه نمایید!!</p>
+                {% endif %}
+            {% else %}
+                {{ object.paragraph|safe }}
+            {% endif %}
         </div>
       </div>
     </div>

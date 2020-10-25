@@ -9,13 +9,13 @@ admin.site.site_title = "مدیریت وبسایت"
 # Register your models here.
 
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ('position','title','slug','parent')
+    list_display = ('position', 'title', 'slug', 'parent')
     search_fields = ('title','slug')
 
 admin.site.register(Category, CategoryAdmin)
 
 class DataAdmin(admin.ModelAdmin):
-    list_display = ('title','slug','date','author','category_to_str')
+    list_display = ('title', 'slug', 'date', 'author', 'category_to_str', 'is_special', 'status')
     list_filter = ('date','author')
     search_fields = ('title','paragraph')
     prepopulated_fields = {'slug':('title',)}
@@ -23,6 +23,6 @@ class DataAdmin(admin.ModelAdmin):
 admin.site.register(Data, DataAdmin)
 
 class SlideAdmin(admin.ModelAdmin):
-    list_display = ('position',)
+    list_display = ('position','image_tag')
 
 admin.site.register(SlideImage,SlideAdmin)

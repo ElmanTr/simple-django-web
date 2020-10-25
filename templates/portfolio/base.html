@@ -18,6 +18,9 @@
   <!-- Custom styles for this template -->
   <link href="{% static 'portfolio/css/clean-blog.min.css'%}" rel="stylesheet">
 
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{% static 'registration/adminlte/plugins/fontawesome-free/css/all.min.css' %}">
+
   <link href="{% static 'portfolio/css/rtl.css' %}" rel="stylesheet">
 
 </head>
@@ -27,7 +30,7 @@
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
-        <a class="navbar-brand" href="..">{% title %}</a>
+        <a class="navbar-brand" href="{% url 'home' %}">{% title %}</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             منو
             <i class="fas fa-bars"></i>
@@ -48,13 +51,21 @@
                     <a class="nav-link" href="{% url 'contact' %}">تماس با ما</a>
                 </li>
                 {% category_navbar %}
+            </ul>
+            <ul class="navbar-nav ml-auto">
                 {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'account:home' %}">پروفایل</a>
+                        <a class="nav-link" href="{% url 'account:home' %}">
+                            <i class="fas fa-user-alt" style="font-size: 14px"></i>
+                            حساب کاربری
+                        </a>
                     </li>
                 {% else %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'account:home' %}">ورود | ثبت نام</a>
+                        <a class="nav-link" href="{% url 'account:home' %}">
+                            <i class="fas fa-sign-in-alt" style="font-size: 17px"></i>
+                            ورود | ثبت نام
+                        </a>
                     </li>
                 {% endif %}
             </ul>

@@ -139,3 +139,18 @@ nav ul ul ul {
 	margin-right: 15%;
 	text-align: center;
 }
+
+.special_article {
+	color: #ff2b2b;
+	text-decoration: none
+}
+
+.special_article:hover {
+	color: #ba0000;
+	text-decoration: none
+}
+
+.special_article:focus {
+	color: #ba0000;
+	text-decoration: none
+}

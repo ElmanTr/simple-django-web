@@ -46,7 +46,6 @@ INSTALLED_APPS = [
     'account.apps.AccountConfig',
     'widget_tweaks',
     'crispy_forms',
-    'django_render_partial',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'

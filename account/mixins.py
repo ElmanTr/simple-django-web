@@ -6,11 +6,11 @@ class FieldsMixin():
     def dispatch(self,request,*args,**kwargs):
         if request.user.is_superuser:
             self.fields = [
-                "title", "author", "paragraph", "slug", "category", "date", "status"
+                "title", "author", "paragraph", "slug", "category", "date", "is_special", "status",
             ]
         elif request.user.is_author:
             self.fields = [
-                "title","paragraph","slug","category","date"
+                "title", "paragraph", "slug", "category", "date", "is_special",
             ]
         else:
             raise Http404("You are not author!")

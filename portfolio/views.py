@@ -38,7 +38,7 @@ def about(request):
 class PostsDetail(DetailView):
     def get_object(self):
         slug = self.kwargs.get('slug')
-        return get_object_or_404(Data,slug=slug,status='p')
+        return get_object_or_404(Data,slug=slug, status='p')
 
     template_name = 'portfolio/postdetail.html'
 

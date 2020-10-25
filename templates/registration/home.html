@@ -12,12 +12,13 @@
                     {% if object_list.count > 0 %}
                         <thead>
                         <tr>
-                          <th>عنوان مقاله</th>
-                          <th>خلاصه</th>
-                          <th>دسته بندی</th>
-                          <th>نویسنده</th>
-                          <th>زمان انتشار</th>
-                          <th>وضعیت</th>
+                            <th>عنوان مقاله</th>
+                            <th>خلاصه</th>
+                            <th>دسته بندی</th>
+                            <th>نویسنده</th>
+                            <th>زمان انتشار</th>
+                            <th>مقاله ویژه</th>
+                            <th>وضعیت</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -32,6 +33,13 @@
                                 <td>{{ x.category_to_str }}</td>
                                 <td>{{ x.author.get_full_name }}</td>
                                 <td>{{ x.date }}</td>
+                                <td>
+                                    {% if x.is_special %}
+                                        <i class="fa fa-check-circle" style="color: green"></i>
+                                    {% else %}
+                                        <i class="fa fa-minus-circle" style="color: red"></i>
+                                    {% endif %}
+                                </td>
                                 <td>
                                     {% if x.status == 'p' %}
                                         <p class="badge badge-success">منتشر شده</p>
