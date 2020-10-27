@@ -1,12 +1,12 @@
 from django.contrib.auth import views
 from django.urls import path
-from .views import ArticleList, ArticleCreate, ArticleUpdate, ArticleDelete, Profile
+from .views import ArticleList, ArticleCreate, ArticleUpdate, ArticleDelete, Profile, Login
 
 app_name = "account"
 
 urlpatterns = [
-    path('login/',views.LoginView.as_view(), name='login'),
-    path('logout/',views.LogoutView.as_view(), name='logout'),
+    path('login/', Login.as_view(), name='login'),
+    path('logout/', views.LogoutView.as_view(), name='logout'),
 
 
     path('', ArticleList.as_view(), name='home'),

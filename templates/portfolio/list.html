@@ -26,6 +26,9 @@
 
 {% block main %}
 
+    {% block slide %}
+    {% endblock %}
+
 <!-- Main Content -->
 {% for x in object_list %}
 
@@ -36,6 +39,9 @@
               <a href="{% url 'posts' %}{{ x.slug }}">
                 <h2 style="font-family: 'B Titr';margin: 30px">
                     {{ x.title }}
+                    {% if x.is_special %}
+                    <span class="badge badge-danger" style="font-size: 15px">ویژه</span>
+                    {% endif %}
                 </h2>
                 <h3 style="font-family: 'Sahel';margin: 30px">
                     {{ x.paragraph|striptags|truncatewords:30 }}

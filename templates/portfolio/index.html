@@ -1,33 +1,20 @@
-{% extends 'portfolio/base.html' %}
+{% extends 'portfolio/list.html' %}
 {% load static %}
-{% block top %}
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="">
-<meta name="author" content="">
+
+{% block page_title %}
 <title>Elman Blog</title>
 {% endblock %}
 
-{% block header %}
-  <!-- Page Header -->
-  <header class="masthead" style="background-image: url({% static 'portfolio/img/home-bg.jpg' %})">
-    <div class="overlay"></div>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
-          <div class="site-heading">
-            <h1 style="font-family: 'B Titr'">وبلاگ ائلمان</h1>
-            <br>
-            <span class="subheading" style="font-family: 'B Titr'">اینجا وبلاگ من است</span>
-          </div>
-        </div>
-      </div>
+{% block site_head %}
+    <div class="site-heading">
+        <h1 style="font-family: 'B Titr'">وبلاگ ائلمان</h1>
+        <br>
+        <span class="subheading" style="font-family: 'B Titr'">اینجا وبلاگ من است</span>
     </div>
-  </header>
 {% endblock %}
 
-{% block main %}
-    <!-- Main Content -->
+    {% block slide %}
+<!-- Main Content -->
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="margin-left: 20%;margin-right: 20%">
         <div class="carousel-inner">
             {% for x in slide %}
@@ -45,45 +32,14 @@
             <span class="sr-only">Next</span>
         </a>
     </div>
+    {% endblock %}
 
-{% for x in object_list %}
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-md-10 mx-auto">
-                <div class="post-preview">
-                  <a href="{% url 'postsdetail' x.slug %}">
-                    <h2 style="font-family: 'B Titr';margin: 30px">
-                        {{ x.title }}
-                    </h2>
-                    <h3 style="margin: 30px">
-                        {{ x.paragraph|striptags|truncatewords:30 }}
-                    </h3>
-                  </a>
-                  <p class="post-meta">نوشته شده توسط
-                    <a href="{% url 'author' x.author %}">{{ x.author.get_full_name }}</a>
-                      در {{ x.date }}</p>
-                </div>
-                <hr>
-            </div>
-        </div>
-    </div>
-{% endfor %}
-
-<!-- Pager -->
+{% block pager %}
 <div class="container">
     <div class="clearfix pager-botton">
         <a class="btn btn-primary float-left" href="{% url 'posts' %}"> پست های قدیمی تر &larr;</a>
     </div>
 </div>
-
-
-<div class="card" style="width: 18rem;margin: 10%">
-  <img src="{% static 'portfolio/img/post-sample-image.jpg' %}" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-
 {% endblock %}
+
+

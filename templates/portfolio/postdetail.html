@@ -18,8 +18,12 @@
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           <div class="post-heading">
-            <h1>{{ object.title }}</h1>
-            <span class="meta">نوشته شده توسط
+            <h1>{{ object.title }}
+              {% if object.is_special %}
+                  <span class="badge badge-danger" style="font-size: 18px">ویژه</span>
+              {% endif %}
+            </h1>
+            <span class="meta"> نوشته شده توسط
               <a href="#">{{ object.postadby }}</a>
               در {{ object.date }}</span>
           </div>
@@ -39,7 +43,8 @@
                 {% if user.is_authenticated and user.is_special_user or user == object.author or user.is_superuser %}
                     {{ object.paragraph|safe }}
                 {% else %}
-                    <p> این مقاله ویژه است ! برای مشاهده آن همین حالا  <a  href="#" class="special_article">اشتراک ویژه</a>  تهیه نمایید!!</p>
+                    {{ object.paragraph|striptags|truncatewords:30 }}
+                    <p class="alert alert-warning"> این مقاله ویژه است ! برای مشاهده آن همین حالا  <a  href="#" class="special_article">اشتراک ویژه</a>  تهیه نمایید!!</p>
                 {% endif %}
             {% else %}
                 {{ object.paragraph|safe }}

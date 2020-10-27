@@ -1,5 +1,5 @@
 from django.http import Http404
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, redirect
 from portfolio.models import Data
 
 class FieldsMixin():
@@ -27,15 +27,22 @@ class FormValidMixin():
 
 class AuthorAccessMixin():
     def dispatch(self,request,pk,*args,**kwargs):
-        article = get_object_or_404(Data,pk=pk)
+        article = get_object_or_404(Data, pk=pk)
         if article.author == request.user and article.status == 'd' or request.user.is_superuser:
             return super().dispatch(request, *args, **kwargs)
         else:
-            raise Http404("You can not see this page :(")
+            raise Http404("You are not allowed to do this! :(")
 
 class SuperUserAccessMixin():
     def dispatch(self,request,*args,**kwargs):
         if request.user.is_superuser:
             return super().dispatch(request, *args, **kwargs)
         else:
-            raise Http404("You are not author of this article !!!")
+            raise Http404("You are not allowed to do this !")
+
+class AuthorsUserAccessMixin():
+    def dispatch(self,request,*args,**kwargs):
+        if request.user.is_superuser or request.user.is_author:
+            return super().dispatch(request, *args, **kwargs)
+        else:
+            return redirect("account:profile")
