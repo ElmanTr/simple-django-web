@@ -1,0 +1,181 @@
+{% extends 'portfolio/base.html' %}
+{% load widget_tweaks %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block top %}
+    <title>Elman blog | Registration</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+    <link rel="icon" type="image/png" href="{% static 'portfolio/img/icons/favicon.ico' %}"/>
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'portfolio/vendor/bootstrap/css/bootstrap.min.css'%}">
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'portfolio/fonts/font-awesome-4.7.0/css/font-awesome.min.css'%}">
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'portfolio/fonts/iconic/css/material-design-iconic-font.min.css'%}">
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'portfolio/vendor/animate/animate.css'%}">
+<!--===============================================================================================-->	
+    <link rel="stylesheet" type="text/css" href="{% static 'portfolio/vendor/css-hamburgers/hamburgers.min.css'%}">
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'portfolio/vendor/animsition/css/animsition.min.css'%}">
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'portfolio/vendor/select2/select2.min.css'%}">
+<!--===============================================================================================-->	
+    <link rel="stylesheet" type="text/css" href="{% static 'portfolio/vendor/daterangepicker/daterangepicker.css'%}">
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'portfolio/css/util.css'%}">
+    <link rel="stylesheet" type="text/css" href="{% static 'portfolio/css/main.css'%}">
+<!--===============================================================================================-->
+    {% endblock %}
+</head>
+<body>
+
+{% block header %}
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url({% static 'portfolio/img/home-bg.jpg' %})">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>ثبت نام</h1>
+            <span class="subheading">میتوانید ثیت نام یا ورود کنید!</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+{% endblock %}
+
+
+{% block main %}
+    <div class="limiter">
+        {% if form.non_field_errors %}
+            <div class="errors">
+                {% for error in form.non_field_errors %}
+                <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% endif %}
+        {% if form.username.errors %}
+            <div class="errors">
+                {% for error in form.username.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% endif %}
+        {% if form.email.errors %}
+            <div class="errors">
+                {% for error in form.email.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% endif %}
+        {% if form.password1.errors %}
+            <div class="errors">
+                {% for error in form.password1.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% endif %}
+        {% if form.password2.errors %}
+            <div class="errors">
+                {% for error in form.password2.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <div class="container-login100">
+            <div class="wrap-login100">
+                <form class="login100-form validate-form" method="post">{% csrf_token %}
+                    <span class="login100-form-title p-b-26 myfont">
+                        ثبت نام در سایت
+                    </span>
+                    <span class="login100-form-title p-b-48">
+                        <i class="zmdi zmdi-font"></i>
+                    </span>
+
+                    <div class="wrap-input100 validate-input" data-validate = "Enter a username">
+                        {{ form.username|add_class:"input100" }}
+                        <span class="focus-input100" data-placeholder="نام کاربری"></span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate = "Enter a firstname">
+                        {{ form.first_name|add_class:"input100" }}
+                        <span class="focus-input100"  data-placeholder="نام"></span>
+                    </div>
+                    <div class="wrap-input100 validate-input" data-validate = "Enter a lastname">
+						{{ form.last_name|add_class:"input100" }}
+						<span class="focus-input100" data-placeholder="نام خانوادگی"></span>
+					</div>
+
+                    <div class="wrap-input100 validate-input" data-validate = "Enter a Valid Email">
+                        {{ form.email|add_class:"input100" }}
+                        <span class="focus-input100" data-placeholder="ایمیل"></span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate="Enter password">
+                        <span class="btn-show-pass">
+                            <i class="zmdi zmdi-eye"></i>
+                        </span>
+                        {{ form.password1|add_class:"input100" }}
+                        <span class="focus-input100" data-placeholder="رمز عبور"></span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate="Re-enter password">
+                        {{ form.password2|add_class:"input100" }}
+                        <span class="focus-input100" data-placeholder="تکرار رمز عبور"></span>
+                    </div>
+
+
+
+                    <div class="container-login100-form-btn">
+                        <div class="wrap-login100-form-btn">
+                            <div class="login100-form-bgbtn"></div>
+                            <button class="login100-form-btn myfont" type="submit">
+                                ورود
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="text-center p-t-115 myfont">
+                        <span class="txt1 myfont" style="font-size: 15px">
+                            آیا ثبت نام کرده اید؟
+                        </span>
+
+                        <a class="txt2 myfont" style="font-size: 15px" href="{% url 'login' %}">
+                            ورود
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+
+    <div id="dropDownSelect1"></div>
+    
+<!--===============================================================================================-->
+    <script src="{% static 'portfolio/vendor/jquery/jquery-3.2.1.min.js'%}"></script>
+<!--===============================================================================================-->
+    <script src="{% static 'portfolio/vendor/animsition/js/animsition.min.js'%}"></script>
+<!--===============================================================================================-->
+    <script src="{% static 'portfolio/vendor/bootstrap/js/popper.js'%}"></script>
+    <script src="{% static 'portfolio/vendor/bootstrap/js/bootstrap.min.js'%}"></script>
+<!--===============================================================================================-->
+    <script src="{% static 'portfolio/vendor/select2/select2.min.js'%}"></script>
+<!--===============================================================================================-->
+    <script src="{% static 'portfolio/vendor/daterangepicker/moment.min.js'%}"></script>
+    <script src="{% static 'portfolio/vendor/daterangepicker/daterangepicker.js'%}"></script>
+<!--===============================================================================================-->
+    <script src="{% static 'portfolio/vendor/countdowntime/countdowntime.js'%}"></script>
+<!--===============================================================================================-->
+    <script src="{% static 'portfolio/js/main.js'%}"></script>
+{% endblock %}
+</body>
+</html>

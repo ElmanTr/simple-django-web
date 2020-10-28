@@ -6,12 +6,12 @@ from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from portfolio.models import Data
 from django.urls import reverse_lazy
 from .models import User
-from .forms import ProfileForms
-from django.contrib.auth.views import LoginView
+from .forms import ProfileForms, SignUpForm
+from django.contrib.auth.views import LoginView, PasswordChangeView
 
 # Create your views here.
 
-class ArticleList(LoginRequiredMixin,AuthorsUserAccessMixin,ListView):
+class ArticleList(AuthorsUserAccessMixin,ListView):
     template_name = "registration/home.html"
 
     def get_queryset(self):
@@ -20,7 +20,7 @@ class ArticleList(LoginRequiredMixin,AuthorsUserAccessMixin,ListView):
         else:
                 return Data.objects.filter(author=self.request.user)
 
-class ArticleCreate(LoginRequiredMixin,AuthorsUserAccessMixin,FormValidMixin,FieldsMixin,CreateView):
+class ArticleCreate(AuthorsUserAccessMixin,FormValidMixin,FieldsMixin,CreateView):
     model = Data
     template_name = "registration/article-create-update.html"
 
@@ -54,3 +54,14 @@ class Login(LoginView):
         user = self.request.user
         if user.is_superuser or user.is_author:
             return reverse_lazy("account:home")
+        else:
+            return reverse_lazy("account:profile")
+
+class PasswordChange(PasswordChangeView):
+    success_url = reverse_lazy("account:password_change_done")
+
+class Registration(CreateView):
+    model = User
+    form_class = SignUpForm
+    template_name = "registration/createaccount.html"
+    success_url = reverse_lazy("home")

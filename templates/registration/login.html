@@ -71,7 +71,7 @@
 						<i class="zmdi zmdi-font"></i>
 					</span>
 
-					<div class="wrap-input100 validate-input" data-validate = "Valid email is: a@b.c">
+					<div class="wrap-input100 validate-input" data-validate = "Enter a username">
 						{{ form.username|add_class:"input100" }}
                         {% if form.username.errors %}
                             <div class="errors">
@@ -112,7 +112,7 @@
 							آیا ثبت نام نکرده اید؟
 						</span>
 
-						<a class="txt2 myfont" style="font-size: 15px" href="#">
+						<a class="txt2 myfont" style="font-size: 15px" href="{% url 'account:registry' %}">
 							ثبت نام
 						</a>
 					</div>
