@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from .models import User
+from django.core.exceptions import ValidationError
 
 class ProfileForms(forms.ModelForm):
     def __init__(self,*args,**kwargs):
@@ -24,11 +25,17 @@ class ProfileForms(forms.ModelForm):
             'special_user',
             'is_author',
         ]
-    
-class SignUpForm(UserCreationForm):
+
+class SignupForm(UserCreationForm):
     first_name = forms.CharField(max_length=30, required=True)
     last_name = forms.CharField(max_length=30, required=True)
     email = forms.EmailField(max_length=200, required=True)
+
+    def clean_email(self):
+        email = self.cleaned_data['email']
+        if User.objects.filter(email=email).exists():
+            raise ValidationError("این ایمیل قبلا ثبت شده است!")
+        return email
 
     class Meta:
         model = User

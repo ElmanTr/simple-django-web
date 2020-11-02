@@ -3,7 +3,6 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
     {% block top %}
     <title>Elman blog | Registration</title>
     <meta charset="UTF-8">
@@ -30,9 +29,8 @@
     <link rel="stylesheet" type="text/css" href="{% static 'portfolio/css/util.css'%}">
     <link rel="stylesheet" type="text/css" href="{% static 'portfolio/css/main.css'%}">
 <!--===============================================================================================-->
-    {% endblock %}
-</head>
-<body>
+
+{% endblock %}
 
 {% block header %}
   <!-- Page Header -->
@@ -177,5 +175,4 @@
 <!--===============================================================================================-->
     <script src="{% static 'portfolio/js/main.js'%}"></script>
 {% endblock %}
-</body>
 </html>
