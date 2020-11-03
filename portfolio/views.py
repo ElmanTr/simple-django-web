@@ -113,3 +113,9 @@ class AuthorList(ListView):
         context = super().get_context_data(**kwargs)
         context['author'] = author
         return context
+
+def searchbar(request):
+    if request.method == 'GET':
+        search = request.GET.get('search')
+        post = Data.objects.all().filter(title__contains=search)
+        return render(request, 'portfolio/searchbar.html', {'post':post})

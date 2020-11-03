@@ -1,0 +1,76 @@
+{% extends 'portfolio/base.html' %}
+{% load static %}
+
+{% block top %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Elman Blog | Results</title>
+{% endblock %}
+
+{% block header%}
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url({% static 'portfolio/img/post-bg.jpg'%})">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+            <h1>
+                نتایج جست و جو :
+            </h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+{% endblock %}
+
+{% block main %}
+  <!-- Post Content -->
+  {% if post %}
+  {% for x in post %}
+    <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="post-preview">
+              <a href="{% url 'posts' %}{{ x.slug }}">
+                <h2 style="font-family: 'B Titr';margin: 30px">
+                    {{ x.title }}
+                    {% if x.is_special %}
+                    <span class="badge badge-danger" style="font-size: 15px">ویژه</span>
+                    {% endif %}
+                </h2>
+                <h3 style="font-family: 'Sahel';margin: 30px">
+                    {{ x.paragraph|striptags|truncatewords:30 }}
+                </h3>
+              </a>
+              <p class="post-meta">نوشته شده توسط
+                <a href="{% url 'author' x.author %}">{{ x.author.get_full_name }}</a>
+                  در {{ x.date }}</p>
+                    <div>
+                        {% for cat in object_list.category.all %}
+                            <a href="#">#{{ cat.title }}</a>
+                        {% endfor %}
+                    </div>
+            </div>
+
+            <hr>
+          </div>
+        </div>
+    </div>
+{% endfor %}
+{% else %}
+<div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <h4>نتیجه ای یافت نشد!</h4>
+        <hr>
+      </div>
+    </div>
+</div>
+{% endif %}
+{% endblock %}
+

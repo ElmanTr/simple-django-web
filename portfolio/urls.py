@@ -9,5 +9,6 @@ urlpatterns = [
     path('preview/<int:pk>',views.PostsPreview.as_view(), name='postspreview'),
     path('posts/',views.PostList.as_view(), name='posts'),
     path('category/<slug:slug>',views.CategoryList.as_view(), name='category'),
-    path('author/<slug:username>', views.AuthorList.as_view(), name="author")
+    path('author/<slug:username>', views.AuthorList.as_view(), name="author"),
+    path('search/', views.searchbar, name='search')
 ]
