@@ -6,22 +6,22 @@
 
 <head>
 
-  {% block top %}
-  {% endblock %}
+{% block top %}
+{% endblock %}
 
-  <!-- Bootstrap core CSS -->
-  <link href="{% static 'portfolio/vendor/bootstrap/css/bootstrap.min.css'%}" rel="stylesheet">
+<!-- Bootstrap core CSS -->
+<link href="{% static 'portfolio/vendor/bootstrap/css/bootstrap.min.css'%}" rel="stylesheet">
 
-  <!-- Custom fonts for this template -->
-  <link href="{% static 'portfolio/vendor/fontawesome-free/css/all.min.css'%}" rel="stylesheet" type="text/css">
+<!-- Custom fonts for this template -->
+<link href="{% static 'portfolio/vendor/fontawesome-free/css/all.min.css'%}" rel="stylesheet" type="text/css">
 
-  <!-- Custom styles for this template -->
-  <link href="{% static 'portfolio/css/clean-blog.min.css'%}" rel="stylesheet">
+<!-- Custom styles for this template -->
+<link href="{% static 'portfolio/css/clean-blog.min.css'%}" rel="stylesheet">
 
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="{% static 'registration/adminlte/plugins/fontawesome-free/css/all.min.css' %}">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="{% static 'registration/adminlte/plugins/fontawesome-free/css/all.min.css' %}">
 
-  <link href="{% static 'portfolio/css/rtl.css' %}" rel="stylesheet">
+<link href="{% static 'portfolio/css/rtl.css' %}" rel="stylesheet">
 
 </head>
 
@@ -53,7 +53,7 @@
                 {% category_navbar %}
                 <li class="nav-item">
                     <form action="{% url 'search' %}" method="GET">
-                        <input required type="text" style="border-radius: 10px;border: none;" name="search">
+                        <input required type="text" style="border-radius: 10px;border: none;font-size: medium;padding: 3px;" placeholder=" تایپ کنید..." name="search">
                         <button style="background-color: #777676;border-radius: 10px;border: none;margin: 5px;" type="submit"><i class="fa fa-search" style="color: white;"></i></button>
                     </form>
                 </li>

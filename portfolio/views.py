@@ -117,5 +117,9 @@ class AuthorList(ListView):
 def searchbar(request):
     if request.method == 'GET':
         search = request.GET.get('search')
-        post = Data.objects.all().filter(title__contains=search)
-        return render(request, 'portfolio/searchbar.html', {'post':post})
+        if not search == '' and not search == ' ' and not search == '  ' :
+            post = Data.objects.all().filter(title__contains=search)
+            return render(request, 'portfolio/searchbar.html', {'post':post})
+        else:
+            post = None
+            return render(request, 'portfolio/searchbar.html', {'post':post})

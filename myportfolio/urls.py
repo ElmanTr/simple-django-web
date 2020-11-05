@@ -27,5 +27,6 @@ urlpatterns = [
     path('login/', Login.as_view(), name='login'),
     re_path(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,100})/$', activate, name='activate'),
     path('registry/', Registration.as_view(), name='registry'),
+    path('comment/', include('comment.urls')),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -3,6 +3,8 @@ from account.models import User
 from django.utils import timezone
 from django.urls import reverse
 from django.utils.html import format_html
+from django.contrib.contenttypes.fields import GenericRelation
+from comment.models import Comment
 
 # My managers
 class ArticleManager(models.Manager):
@@ -40,6 +42,7 @@ class Data(models.Model):
     date = models.DateTimeField(default=timezone.now,verbose_name="زمان انتشار مقاله")
     is_special = models.BooleanField(default=False,verbose_name="مقاله ویژه")
     status = models.CharField(max_length=1,choices=STATUS_CHOICES,default='d',verbose_name="وضعیت")
+    comments = GenericRelation(Comment)
 
     class Meta:
         verbose_name = "مقاله"
