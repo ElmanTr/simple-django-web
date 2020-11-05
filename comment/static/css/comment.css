@@ -27,7 +27,6 @@
     word-wrap: break-word;
 }
 #comments .h7 {
-    font-size: 0.9rem;
     font-family: inherit;
     font-weight: 500;
     line-height: 1.2;
@@ -150,4 +149,36 @@ input#search-input:focus::placeholder {
     color: #78281f;
     background-color: #fadbd8;
     border-color: #f8cdc8;
+}
+
+.media-comment-bubble {
+    border-radius: 20px;
+    position: relative;
+    background-color: #f2f2f2;
+    padding: 1rem 1.25rem;
+}
+
+.media-comment-bubble.left-top:after {
+    content: ' ';
+    position: absolute;
+    width: 0;
+    height: 0;
+    right: -16px;
+    left: auto;
+    top: 0;
+    bottom: auto;
+    border: 18px solid transparent;
+    border-top-color: #f2f2f2; 
+}
+
+button.js-read-more-btn.btn.btn-link.btn-xs {
+    font-family: 'Sahel' !important;
+}
+
+.blockquote-footer {
+    padding: 20px;
+}
+
+.text-success {
+    text-decoration: none !important;
 }

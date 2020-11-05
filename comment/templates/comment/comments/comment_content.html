@@ -2,7 +2,7 @@
 {% load i18n %}
 
 
-<div class="js-updated-comment {% if comment.has_flagged_state %}flagged-comment {% endif %}{% block content_wrapper_cls %}{% if has_valid_profile %}col-9 col-md-10{% else %}co-11 mx-3{% endif %}{% endblock content_wrapper_cls %}" id="{{ comment.urlhash }}">
+<div class="media-comment-bubble left-top js-updated-comment {% if comment.has_flagged_state %}flagged-comment {% endif %}{% block content_wrapper_cls %}{% if has_valid_profile %}col-9 col-md-10{% else %}co-11 mx-3{% endif %}{% endblock content_wrapper_cls %}" id="{{ comment.urlhash }}">
     {% block comment_content %}
     {% render_content comment 30 %}
     {% endblock comment_content %}
@@ -16,7 +16,7 @@
                 {{comment.user.get_full_name}}
             </a> | 
             {% if comment.is_edited %}
-            <span class="font-italic" title="{% trans 'Edited' %}">{% blocktrans with edited_time=comment.edited|timesince %}Edited: {{ edited_time }} قبل{% endblocktrans %}</span>
+            <span class="font-italic" title="{% trans 'Edited' %}">{% blocktrans with edited_time=comment.edited|timesince %}ویرایش شده : {{ edited_time }} قبل{% endblocktrans %}</span>
             {% else %}
             <span class="font-italic" title="{% trans 'Posted' %}">{% blocktrans with posted_time=comment.posted|timesince %}{{ posted_time }} قبل{% endblocktrans %}</span>
             {% endif %}

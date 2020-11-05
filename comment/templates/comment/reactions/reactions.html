@@ -11,7 +11,7 @@
     >
         {% include "comment/reactions/like_icon.html" %}
     </a>
-    <span class="ml-4 js-dislike-number text-dark">{{ comment.dislikes }}</span>
+    <span class="mr-4 js-dislike-number text-dark">{{ comment.dislikes }}</span>
     {% url 'comment:react' pk=comment.id reaction='dislike' as dislike_url %}
     <a title="{% trans "dislike" %}" class="{% block dislike_link_cls %} {% endblock dislike_link_cls %}
         {% if user.is_authenticated %}

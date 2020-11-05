@@ -15,6 +15,7 @@
 }
 
 body{
+	text-align: right !important;
     direction: rtl;
     text-align: right;
 	font-size:18px !important;
