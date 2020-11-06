@@ -10,8 +10,10 @@ UserAdmin.fieldsets[2][1]['fields'] = (
     'is_superuser',
     'is_author',
     'special_user',
+    'photo',
     'groups',
     'user_permissions',
+    
 )
 
 UserAdmin.list_display += ('is_author','is_special_user')

@@ -17,7 +17,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="{% gravatar_url user.email 150 %}" class="img-circle elevation-2" alt="{{ user.email }}">
+          <img style="height: 40px;width: 40px;" src="{% if user.photo %}{{ user.photo.url }}{% else %}{% gravatar_url user.email 150 %}{% endif %}" class="img-circle elevation-2" alt="{{ user.email }}">
         </div>
         <div class="info">
           <a href="#" class="d-block">{{ user.get_full_name }}</a>

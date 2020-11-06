@@ -4,11 +4,16 @@ from .models import User
 from django.core.exceptions import ValidationError
 
 class ProfileForms(forms.ModelForm):
+        
     def __init__(self,*args,**kwargs):
         user = kwargs.pop('user')
         super(ProfileForms, self).__init__(*args,**kwargs)
 
         self.fields['username'].help_text = 'الزامی. 150 کاراکتر یا کمتر. فقط شامل حروف، اعداد، و علامات @/./+/-/_'
+        self.fields['photo'].help_text = 'عکس پروفایل خود را آپلود کنید!'
+        self.fields['first_name'].required = True
+        self.fields['last_name'].required = True
+        self.fields['email'].required = True
         if not user.is_superuser:
             self.fields['username'].disabled = True
             self.fields['email'].disabled = True
@@ -24,6 +29,7 @@ class ProfileForms(forms.ModelForm):
             'first_name',
             'special_user',
             'is_author',
+            'photo',
         ]
 
 class SignupForm(UserCreationForm):
@@ -45,5 +51,5 @@ class SignupForm(UserCreationForm):
             'last_name',
             'email', 
             'password1', 
-            'password2', 
+            'password2',
             ]

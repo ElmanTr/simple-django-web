@@ -3,7 +3,7 @@
 
 <div class="row">
     <div>
-        <img style="border-radius: 50%;top: 0;bottom: 10px;" src="{% gravatar_url comment.user.email 50 %}">
+        <img style="border-radius: 50%; height: 40px;width: 40px;" src="{% if comment.user.photo %}{{ comment.user.photo.url }}{% else %}{% gravatar_url comment.user.email 150 %}{% endif %}" class="img-circle elevation-2">
     </div>
     {% if has_valid_profile %}
         <div class="{% block image_wrapper_cls %}col-2 col-md-1{% endblock image_wrapper_cls %}">

@@ -6,6 +6,7 @@ from django.utils import timezone
 class User(AbstractUser):
     is_author = models.BooleanField(default=False,verbose_name='وضعیت نویسندگی')
     special_user = models.DateTimeField(default=timezone.now,verbose_name='اشتراک ویژه تا')
+    photo = models.ImageField(upload_to="profileimg",blank=True, verbose_name='عکس')
 
     def is_special_user(self):
         if self.is_superuser == False:
