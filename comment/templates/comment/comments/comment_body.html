@@ -1,5 +1,10 @@
 {% load comment_tags %}
+{% load gravatar %}
+
 <div class="row">
+    <div>
+        <img style="border-radius: 50%;top: 0;bottom: 10px;" src="{% gravatar_url comment.user.email 50 %}">
+    </div>
     {% if has_valid_profile %}
         <div class="{% block image_wrapper_cls %}col-2 col-md-1{% endblock image_wrapper_cls %}">
             <a href="{% get_profile_url comment %}">
