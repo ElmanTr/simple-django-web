@@ -63,7 +63,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{% url 'account:password_change' %}" class="nav-link {% if request.resolver_match.url_name == 'password_change' %}active{% endif %}">
+            <a href="{% url 'password_change' %}" class="nav-link {% if request.resolver_match.url_name == 'password_change' %}active{% endif %}">
               <i class="fas fa-unlock-alt"></i>
               <p>
                 تغییر رمز عبور
