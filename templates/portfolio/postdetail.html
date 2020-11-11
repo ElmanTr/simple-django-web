@@ -26,7 +26,7 @@
               {% endif %}
             </h1>
             <span class="meta"> نوشته شده توسط
-              <a href="#">{{ object.author }}</a>
+              <a href="{% url 'author' object.author %}">{{ object.author.get_full_name }}</a>
               در {{ object.date }}</span>
           </div>
         </div>

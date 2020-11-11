@@ -98,7 +98,7 @@ class CreateComment(CanCreateMixin, BaseCommentView):
         if author_email:
             email = EmailMessage(
                 "دیدگاه جدید",
-                "دیدگاه جدیدی برای مقاله «{}» شما شده است : \n {}{}".format(article, current_site, reverse('postsdetail', kwargs = {'slug': article.slug})),
+                "دیدگاه جدیدی برای مقاله «{}» شما شده است. برای مشاهده کلیک کنید : \n {}{}#{}".format(article, current_site, reverse('postsdetail', kwargs = {'slug': article.slug}), self.comment.urlhash),
                 to=[author_email]
             )
             email.send()
@@ -106,7 +106,7 @@ class CreateComment(CanCreateMixin, BaseCommentView):
         if user_email:
             email = EmailMessage(
             "دیدگاه شما ثبت شد",
-            "دیدگاه شما برای مقاله «{}» ثبت شد : \n {}{}".format(article, current_site, reverse('postsdetail', kwargs = {'slug': article.slug})),
+            "دیدگاه شما برای مقاله «{}» ثبت شد : \n {}{}#{}".format(article, current_site, reverse('postsdetail', kwargs = {'slug': article.slug}), self.comment.urlhash),
             to=[user_email]
             )
             email.send()
@@ -114,7 +114,7 @@ class CreateComment(CanCreateMixin, BaseCommentView):
         if parent_email:
             email = EmailMessage(
                 "پاسخ به دیدگاه شما",
-                "پاسخی به دیدگاه شما در مقاله «{}» ثبت شده است. برای مشاهده روی لینک زیر کلیک کنید : \n {}{}".format(article, current_site, reverse('postsdetail', kwargs = {'slug': article.slug})),
+                "پاسخی به دیدگاه شما در مقاله «{}» ثبت شده است. برای مشاهده روی لینک زیر کلیک کنید : \n {}{}#{}".format(article, current_site, reverse('postsdetail', kwargs = {'slug': article.slug}), self.comment.urlhash),
                 to=[parent_email]
             )
             email.send()

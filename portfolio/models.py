@@ -34,7 +34,7 @@ class Data(models.Model):
         ('p', 'منتشر شده'),
         ('i', 'در حال بررسی'),
     )
-    author = models.ForeignKey(User, null=True, on_delete=models.SET_NULL, related_name='projects',verbose_name='نویسنده')
+    author = models.ForeignKey(User, null=True, on_delete=models.SET_NULL, related_name="projects", verbose_name='نویسنده')
     slug = models.SlugField(max_length=100,unique=True,default='',verbose_name="آدرس مقاله")
     title = models.CharField(max_length=100, verbose_name="عنوان مقاله")
     category = models.ManyToManyField(Category,blank=True, verbose_name="دسته بندی", related_name="projects")
