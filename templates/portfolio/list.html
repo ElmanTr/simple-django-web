@@ -1,5 +1,7 @@
 {% extends 'portfolio/base.html' %}
 {% load static %}
+{% load ratings %}
+
 {% block top %}
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -37,13 +39,14 @@
           <div class="col-lg-8 col-md-10 mx-auto">
             <div class="post-preview">
               <a href="{% url 'posts' %}{{ x.slug }}">
-                <h2 style="font-family: 'B Titr';margin: 30px">
+                <h2 style="font-family: 'B Titr';margin: 20px 20px 0px 20px">
                     {{ x.title }}
+                    <div>{% ratings x %}</div>
                     {% if x.is_special %}
                     <span class="badge badge-danger" style="font-size: 15px">ویژه</span>
                     {% endif %}
                 </h2>
-                <h3 style="font-family: 'Sahel';margin: 30px">
+                <h3 style="font-family: 'Sahel';margin: 0px 20px 20px 20px">
                     {{ x.paragraph|striptags|truncatewords:30 }}
                 </h3>
               </a>

@@ -1,6 +1,7 @@
 {% extends 'portfolio/base.html' %}
 {% load static %}
 {% load comment_tags %}
+{% load ratings %}
 
 {% block top %}
 <meta charset="utf-8">
@@ -19,7 +20,7 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
-          <div class="post-heading">
+          <div class="post-heading" >
             <h1>{{ object.title }}
               {% if object.is_special %}
                   <span class="badge badge-danger" style="font-size: 18px">ویژه</span>
@@ -28,6 +29,7 @@
             <span class="meta"> نوشته شده توسط
               <a href="{% url 'author' object.author %}">{{ object.author.get_full_name }}</a>
               در {{ object.date }}</span>
+              <div>{% ratings object %}</div>
           </div>
         </div>
       </div>
