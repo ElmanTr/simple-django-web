@@ -17,6 +17,13 @@ class ArticleManager(models.Manager):
 class IPAddress(models.Model):
     ip_address = models.GenericIPAddressField(verbose_name='آدرس آی پی')
 
+    class Meta:
+        verbose_name = "آی پی"
+        verbose_name_plural = "آی پی ها"
+
+    def __str__(self):
+        return self.ip_address
+
 class Category(models.Model):
     title = models.CharField(max_length=100, verbose_name="عنوان دسته بندی")
     slug = models.SlugField(max_length=100,unique=True,default='',verbose_name="آدرس دسته بندی")

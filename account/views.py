@@ -74,7 +74,7 @@ from django.contrib.auth import login
 
 class Registration(CreateView):
     form_class = SignupForm
-    template_name = "registration/createaccount.html"
+    template_name = "registration/signup.html"
 
     def form_valid(self, form):
         user = form.save(commit=False)
@@ -93,7 +93,14 @@ class Registration(CreateView):
             mail_subject, message, to=[to_email]
         )
         email.send()
-        return HttpResponse('لینک فعالسازی به ایمیل شما ارسال شد!')
+        return HttpResponse("""
+        <html dir="rtl" lang='fa'>
+        <center>
+        <h2 class='my font'>لینک فعالسازی به ایمیل شما ارسال شد!</h2>
+        <a style='text-decoration:none' href="..">برگشت به صفحه اصلی</a>
+        </center>
+        </html>
+        """)
 
 # def signup(request):
 #     if request.method == 'POST':
