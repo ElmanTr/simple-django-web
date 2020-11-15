@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Data,Category,SlideImage
+from .models import Data, Category, SlideImage, IPAddress
 
 # Admin page changes
 
@@ -26,3 +26,5 @@ class SlideAdmin(admin.ModelAdmin):
     list_display = ('position','image_tag')
 
 admin.site.register(SlideImage,SlideAdmin)
+
+admin.site.register(IPAddress)

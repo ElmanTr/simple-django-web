@@ -9,7 +9,7 @@ class ProfileForms(forms.ModelForm):
         user = kwargs.pop('user')
         super(ProfileForms, self).__init__(*args,**kwargs)
 
-        self.fields['username'].help_text = 'الزامی. 150 کاراکتر یا کمتر. فقط شامل حروف، اعداد، و علامات @/./+/-/_'
+        self.fields['username'].help_text = 'الزامی. 150 کاراکتر یا کمتر. فقط شامل حروف انگلیسی، اعداد و علامات @/./+/-/_'
         self.fields['photo'].help_text = 'با کلیک یا کشیدن و رها کردن عکس در باکس سبز عکس پروفایل خود را آپلود کنید!'
         self.fields['first_name'].required = True
         self.fields['last_name'].required = True
@@ -47,9 +47,9 @@ class SignupForm(UserCreationForm):
         model = User
         fields = [
             'username',
-            'first_name', 
+            'first_name',
             'last_name',
-            'email', 
-            'password1', 
+            'email',
+            'password1',
             'password2',
             ]

@@ -38,7 +38,13 @@ def about(request):
 class PostsDetail(DetailView):
     def get_object(self):
         slug = self.kwargs.get('slug')
-        return get_object_or_404(Data,slug=slug, status='p')
+        article = get_object_or_404(Data,slug=slug, status='p')
+
+        ip_address = self.request.user.ip_address
+        if not ip_address in article.hits.all():
+            article.hits.add(ip_address)
+
+        return article
 
     template_name = 'portfolio/postdetail.html'
 

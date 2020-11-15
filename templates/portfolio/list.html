@@ -54,8 +54,9 @@
                 <a href="{% url 'author' x.author %}">{{ x.author.get_full_name }}</a>
                   در {{ x.date }}</p>
                     <div>
+                      <div>بازدید ها : {{ x.hits.count }}</div>
                       {% for cat in x.category.all %}
-                        <a href="{% url 'category' cat.slug %}">#{{ cat.title }}</a>
+                        <a style="text-decoration: none;" href="{% url 'category' cat.slug %}">#{{ cat.title }}</a>
                       {% endfor %}
                     </div>
             </div>

@@ -14,6 +14,9 @@ class ArticleManager(models.Manager):
 
 # Create your models here.
 
+class IPAddress(models.Model):
+    ip_address = models.GenericIPAddressField(verbose_name='آدرس آی پی')
+
 class Category(models.Model):
     title = models.CharField(max_length=100, verbose_name="عنوان دسته بندی")
     slug = models.SlugField(max_length=100,unique=True,default='',verbose_name="آدرس دسته بندی")
@@ -43,6 +46,7 @@ class Data(models.Model):
     is_special = models.BooleanField(default=False,verbose_name="مقاله ویژه")
     status = models.CharField(max_length=1,choices=STATUS_CHOICES,default='d',verbose_name="وضعیت")
     comments = GenericRelation(Comment)
+    hits = models.ManyToManyField(IPAddress, blank=True, related_name='hits', verbose_name='بازدید ها')
 
     class Meta:
         verbose_name = "مقاله"

@@ -30,6 +30,7 @@
               <a href="{% url 'author' object.author %}">{{ object.author.get_full_name }}</a>
               در {{ object.date }}</span>
               <div>{% ratings object %}</div>
+              <div>بازدید ها : {{ object.hits.count }}</div>
           </div>
         </div>
       </div>
