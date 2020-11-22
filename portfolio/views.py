@@ -4,6 +4,8 @@ from django.shortcuts import render, get_object_or_404
 #from django.core.paginator import Paginator
 from .models import Data, Category, SlideImage
 from account.mixins import AuthorAccessMixin
+from django.db.models import Count, Q
+from datetime import datetime, timedelta
 
 # views
 
@@ -13,16 +15,19 @@ from account.mixins import AuthorAccessMixin
 #    }
 #    return render(request, 'portfolio/index.html',context)
 
+# اینجا بر اساس تازه ترین ها مرتب شده
 class ProjectList(ListView):
     # model = Data
     # paginate_by =
     # context_object_name =
-    queryset = Data.objects.published().order_by('-date')[:5]
+    queryset = Data.objects.published()[:5]
 
     def get_context_data(self, **kwargs):
+        last_month = datetime.today() - timedelta(days=30)
         context = super().get_context_data(**kwargs)
         context['slide'] = SlideImage.objects.all()
-        return context
+        context['popular_articles'] = Data.objects.published().annotate(count = Count('hits', filter= Q(articlehit__created__gt=last_month))).order_by("-count","-date")[:5]
+        return context      
 
     template_name = 'portfolio/index.html'
 

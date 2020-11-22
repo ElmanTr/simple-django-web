@@ -13,7 +13,8 @@
     </div>
 {% endblock %}
 
-    {% block slide %}
+{% block slide %}
+
 <!-- Main Content -->
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="margin-left: 20%;margin-right: 20%">
         <div class="carousel-inner">
@@ -32,7 +33,17 @@
             <span class="sr-only">Next</span>
         </a>
     </div>
-    {% endblock %}
+
+    <div class="popular_articles">
+        <h2 class="h4">مقالات پربازدید ماه</h2>
+        <hr>
+        {% for a in popular_articles %}
+            <div>
+                <a style="text-decoration: none;" href="{% url 'postsdetail' a.slug %}">{{ a.title }}</a>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
 
 {% block pager %}
 <div class="container">
