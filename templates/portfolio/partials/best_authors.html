@@ -1,0 +1,13 @@
+{% load static %}
+
+<link href="{% static 'portfolio/css/rtl.css' %}">
+
+<div class="best_authors">
+    <h2 class="h4">فعال ترین نویسنده ها</h2>
+    <hr>
+    {% for a in author %}
+        <div>
+            <a style="text-decoration: none;" href="{% url 'author' a.username %}">{{ a.get_full_name }}</a>
+        </div>
+    {% endfor %}
+</div>

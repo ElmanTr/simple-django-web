@@ -1,0 +1,13 @@
+{% load static %}
+
+<link href="{% static 'portfolio/css/rtl.css' %}">
+
+<div class="popular_articles">
+    <h2 class="h4">مقالات پربازدید ماه</h2>
+    <hr>
+    {% for a in articles %}
+        <div>
+            <a style="text-decoration: none;" href="{% url 'postsdetail' a.slug %}">{{ a.title }}</a>
+        </div>
+    {% endfor %}
+</div>
