@@ -3,6 +3,7 @@ from ..models import Category, Data
 from account.models import User
 from django.db.models import Count, Q
 from datetime import datetime, timedelta
+from django.contrib.contenttypes.models import ContentType
 
 register = template.Library()
 
@@ -16,11 +17,21 @@ def category_navbar():
         "category": Category.objects.all(),
     }
 
-@register.inclusion_tag("portfolio/partials/popular_articles.html")
+@register.inclusion_tag("portfolio/partials/sidebararticles.html")
 def popular_articles():
     last_month = datetime.today() - timedelta(days=30)
     return {
-        "articles": Data.objects.published().annotate(count = Count('hits', filter= Q(articlehit__created__gt=last_month))).order_by("-count","-date")[:5]
+        "articles": Data.objects.published().annotate(count = Count('hits', filter= Q(articlehit__created__gt=last_month))).order_by("-count","-date")[:5],
+        "title": 'مقالات پربازدید ماه'
+    }
+
+@register.inclusion_tag("portfolio/partials/sidebararticles.html")
+def hot_articles():
+    last_month = datetime.today() - timedelta(days=30)
+    content_type_id = ContentType.objects.get(app_label='portfolio', model='data').id
+    return {
+        "articles": Data.objects.published().annotate(count = Count('comments', filter= Q(comments__posted__gt=last_month) and Q(comments__content_type_id=content_type_id))).order_by("-count","-date")[:5],
+        "title": 'مقالات داغ ماه'
     }
 
 @register.inclusion_tag("portfolio/partials/best_authors.html")

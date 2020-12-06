@@ -11,14 +11,14 @@
 }
 
 .myfont , .focus-input100::after {
-	font-family: Sahel !important;
+    font-family: Sahel !important;
 }
 
 body{
-	text-align: right !important;
+    text-align: right !important;
     direction: rtl;
     text-align: right;
-	font-size:18px !important;
+    font-size:18px !important;
     font-family: "Sahel" !important;
 }
 
@@ -27,8 +27,8 @@ body a {
 }
 
 body h1 {
-	font-family: "Sahel" !important;
-	font-weight:800;
+    font-family: "Sahel" !important;
+    font-weight:800;
 }
 
 .navbar-nav {
@@ -45,71 +45,71 @@ body h1 {
 }
 
 nav {
-	text-align: center;
+    text-align: center;
 }
 
 nav ul ul {
-	display: none;
+    display: none;
 
 }
 
 nav ul li:hover > ul {
-	display: block;
+    display: block;
 }
 
 nav ul {
-	box-shadow: 0px 0px 9px rgba(0,0,0,0.15);
-	padding-left: 10px;
-	padding-right: 10px;
-	padding-top: 10px;
-	padding-bottom: 10px;
-	border-radius: 10px;
-	list-style: none;
-	position: relative;
-	display: inline-table;
-	background-color: #777676 !important;
+    box-shadow: 0px 0px 9px rgba(0,0,0,0.15);
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 10px;
+    list-style: none;
+    position: relative;
+    display: inline-table;
+    background-color: #777676 !important;
 }
 nav ul:after {
-	content: "";
-	clear: both;
-	display: block;
+    content: "";
+    clear: both;
+    display: block;
 }
 
 nav ul li {
-	float: right;
-	position: relative;
+    float: right;
+    position: relative;
 }
 
 nav ul li:hover {
-	color: #777777 ;
+    color: #777777 ;
 }
 
 nav ul li:hover a {
-	color: #9b9999 ;
+    color: #9b9999 ;
 }
 
 nav ul li a {
-	display: block;
-	padding: 15px 32px;
-	text-decoration: none;
+    display: block;
+    padding: 15px 32px;
+    text-decoration: none;
 }
 
 nav ul ul {
-	border-radius: 0px;
-	padding: 0;
-	position: absolute;
-	top: 100%;
-	right: 0;
-	width: 200px;
+    border-radius: 0px;
+    padding: 0;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 200px;
 }
 nav ul ul li {
-	float: none;
-	border-bottom: 1px solid #b7b7b7;
-	position: relative;
+    float: none;
+    border-bottom: 1px solid #b7b7b7;
+    position: relative;
 }
 nav ul ul li a {
-	padding: 15px 40px;
-	color: #ffffff !important;
+    padding: 15px 40px;
+    color: #ffffff !important;
 }
 
 #mainNav.is-fixed .navbar-nav>li.nav-item>a{color:white !important;}
@@ -117,59 +117,62 @@ nav ul ul li a {
 #mainNav .navbar-nav>li.nav-item>a:focus,#mainNav .navbar-nav>li.nav-item>a:hover{color: #cfcfcf !important}
 
 nav ul ul li a:hover {
-	color: #cfcfcf !important;
+    color: #cfcfcf !important;
     border-radius: 10px;
 }
 
 nav ul ul ul {
-	position: absolute;
-	right: 100%;
-	top:0;
+    position: absolute;
+    right: 100%;
+    top:0;
 }
 
 .btn-show-pass {
-	right: initial !important;
-	left: 0 !important;
+    right: initial !important;
+    left: 0 !important;
 }
 
 .errors {
-	color: red;
-	background-color: #ffc8c8;
-	border-radius: 10px;
-	padding: 10px;
-	margin-left: 15%;
-	margin-right: 15%;
-	text-align: center;
+    color: red;
+    background-color: #ffc8c8;
+    border-radius: 10px;
+    padding: 10px;
+    margin-left: 15%;
+    margin-right: 15%;
+    text-align: center;
 }
 
 .special_article {
-	color: #ff2b2b;
-	text-decoration: none
+    color: #ff2b2b;
+    text-decoration: none
 }
 
 .special_article:hover {
-	color: #ba0000;
-	text-decoration: none
+    color: #ba0000;
+    text-decoration: none
 }
 
 .special_article:focus {
-	color: #ba0000;
-	text-decoration: none
+    color: #ba0000;
+    text-decoration: none
+}
+
+aside {
+    width: 240px;
+    position: absolute;
+    left: 10px;
 }
 
 .popular_articles {
     border: 1px solid #000;
     padding: 15px;
     border-radius: 5px;
-    width: 240px;
-    position: absolute;
-    left: 10px;
     box-shadow: 3px 3px #7d7d7d;
     margin: 15px;
 }
 
 .best_authors {
-	border: 1px solid #000;
+    border: 1px solid #000;
     padding: 15px;
     border-radius: 5px;
     width: 240px;

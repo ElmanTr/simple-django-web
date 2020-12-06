@@ -88,8 +88,10 @@
 
   {% block header %}
   {% endblock %}
-  
-  {% popular_articles %}
+  <aside>
+    {% popular_articles %}
+    {% hot_articles %}
+  </aside>
   {% best_authors %}
 
   {% block main %}
