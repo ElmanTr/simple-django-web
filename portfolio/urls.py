@@ -10,5 +10,5 @@ urlpatterns = [
     path('posts/',views.PostList.as_view(), name='posts'),
     path('category/<slug:slug>',views.CategoryList.as_view(), name='category'),
     path('author/<slug:username>', views.AuthorList.as_view(), name="author"),
-    path('search/', views.searchbar, name='search')
+    path('search/', views.SearchList.as_view(), name='search')
 ]

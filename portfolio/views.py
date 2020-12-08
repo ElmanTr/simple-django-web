@@ -121,14 +121,31 @@ class AuthorList(ListView):
         context['author'] = author
         return context
 
-def searchbar(request):
-    if request.method == 'GET':
-        search = request.GET.get('search')
-        if not search == '' and not search == ' ' and not search == '  ' :
-            post1 = Data.objects.all().filter(title__contains=search)
-            post2 = Data.objects.all().filter(paragraph__contains=search)
-            post = post1 | post2
-            return render(request, 'portfolio/searchbar.html', {'post':post,'search':search})
-        else:
-            post = None
-            return render(request, 'portfolio/searchbar.html', {'post':post,'search':search})
+class SearchList(ListView):
+    paginate_by = 4
+    template_name = 'portfolio/searchbar.html'
+    context_object_name = 'post'
+
+    def get_queryset(self):
+        search = self.request.GET.get('search')
+        post1 = Data.objects.published().filter(title__icontains=search)
+        post2 = Data.objects.published().filter(paragraph__icontains=search)
+        post = post1 | post2
+        return post
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['search'] = self.request.GET.get('search')
+        return context
+
+# def searchbar(request):
+#     if request.method == 'GET':
+#         search = request.GET.get('search')
+#         if not search == '' and not search == ' ' and not search == '  ' :
+#             post1 = Data.objects.all().filter(title__icontains=search)
+#             post2 = Data.objects.all().filter(paragraph__icontains=search)
+#             post = post1 | post2
+#             return render(request, 'portfolio/searchbar.html', {'post':post,'search':search})
+#         else:
+#             post = None
+#             return render(request, 'portfolio/searchbar.html', {'post':post,'search':search})

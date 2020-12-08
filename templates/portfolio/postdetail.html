@@ -2,6 +2,7 @@
 {% load static %}
 {% load comment_tags %}
 {% load ratings %}
+{% load humanize %}
 
 {% block top %}
 <meta charset="utf-8">
@@ -28,7 +29,7 @@
             </h1>
             <span class="meta"> نوشته شده توسط
               <a href="{% url 'author' object.author %}">{{ object.author.get_full_name }}</a>
-              در {{ object.date }}</span>
+              در {{ object.date|naturaltime }}</span>
               <div>{% ratings object %}</div>
               <div>بازدید ها : {{ object.hits.count }}</div>
           </div>

@@ -30,7 +30,7 @@
 
 {% block main %}
   <!-- Post Content -->
-  {% if post %}
+
   {% for x in post %}
     <div class="container">
         <div class="row">
@@ -61,16 +61,16 @@
           </div>
         </div>
     </div>
-{% endfor %}
-{% else %}
-<div class="container">
+  {% empty %}
+  <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
         <h4>نتیجه ای یافت نشد!</h4>
         <hr>
       </div>
     </div>
-</div>
-{% endif %}
+  </div>
+  {% endfor %}
+
 {% endblock %}
 
