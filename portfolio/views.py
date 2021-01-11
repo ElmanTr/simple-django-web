@@ -149,3 +149,6 @@ class SearchList(ListView):
 #         else:
 #             post = None
 #             return render(request, 'portfolio/searchbar.html', {'post':post,'search':search})
+
+def page_not_found(request,exception=""):
+    return render(request,'portfolio/error_404.html',{'exception':exception})

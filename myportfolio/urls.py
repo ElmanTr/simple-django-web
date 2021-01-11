@@ -31,3 +31,5 @@ urlpatterns = [
     re_path(r'^ratings/', include('star_ratings.urls', namespace='ratings')),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+handler404 = 'portfolio.views.page_not_found'
