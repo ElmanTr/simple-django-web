@@ -4,6 +4,8 @@ from django.shortcuts import render, get_object_or_404
 #from django.core.paginator import Paginator
 from .models import Data, Category, SlideImage
 from account.mixins import AuthorAccessMixin
+# translate
+from django.utils.translation import activate
 
 # views
 
@@ -18,7 +20,11 @@ class ProjectList(ListView):
     # model = Data
     # paginate_by =
     # context_object_name =
-    queryset = Data.objects.published()[:5]
+    def get_queryset(self):
+        queryset = Data.objects.published()[:5]
+        activate('fa')
+        return queryset
+    
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

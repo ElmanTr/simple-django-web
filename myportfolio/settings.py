@@ -120,6 +120,11 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
+LANGUAGES = [
+    ('en','English'),
+    ('fa','Persian'),
+]
+
 LANGUAGE_CODE = 'fa-ir'
 
 TIME_ZONE = 'Asia/Tehran'
@@ -159,3 +164,8 @@ STAR_RATINGS_STAR_HEIGHT = 18
 # STAR_RATINGS_RANGE = 5
 # STAR_RATINGS_ANONYMOUS = True
 # STAR_RATINGS_RERATE = False
+
+
+LOCALE_PATHS = [
+    os.path.join(BASE_DIR, 'portfolio\locale'),
+]

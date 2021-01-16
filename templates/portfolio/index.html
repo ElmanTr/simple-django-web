@@ -1,5 +1,7 @@
 {% extends 'portfolio/list.html' %}
 {% load static %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
 
 {% block page_title %}
 <title>Elman Blog</title>
@@ -7,9 +9,9 @@
 
 {% block site_head %}
     <div class="site-heading">
-        <h1 style="font-family: 'B Titr'">وبلاگ ائلمان</h1>
+        <h1 style="font-family: 'B Titr'">{% trans 'وبلاگ ائلمان' %}</h1>
         <br>
-        <span class="subheading" style="font-family: 'B Titr'">اینجا وبلاگ من است</span>
+        <span class="subheading" style="font-family: 'B Titr'">{% trans 'اینجا وبلاگ من است' %}</span>
     </div>
 {% endblock %}
 
@@ -39,7 +41,7 @@
 {% block pager %}
 <div class="container">
     <div class="clearfix pager-botton">
-        <a class="btn btn-primary float-left" href="{% url 'posts' %}"> پست های قدیمی تر &larr;</a>
+        <a class="btn btn-primary float-left" href="{% url 'posts' %}">{% trans " پست های قدیمی تر &larr;" %}</a>
     </div>
 </div>
 {% endblock %}

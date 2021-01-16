@@ -1,5 +1,7 @@
 {% load static %}
 {% load base_tags %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -25,7 +27,13 @@
 <link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
 <script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
 
-<link href="{% static 'portfolio/css/rtl.css' %}" rel="stylesheet">
+
+{% if LANGUAGE_CODE == 'fa' %}
+  <link href="{% static 'portfolio/css/rtl.css' %}" rel="stylesheet">
+{% elif LANGUAGE_CODE == 'en' %}
+  <link href="{% static 'portfolio/css/ltr.css' %}" rel="stylesheet">
+{% endif %}
+
 
 </head>
 
@@ -36,23 +44,23 @@
     <div class="container">
         <a class="navbar-brand" href="{% url 'home' %}">{% title %}</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            منو
+            {% trans 'منو' %}
             <i class="fas fa-bars"></i>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'home' %}">صفحه اصلی</a>
+                    <a class="nav-link" href="{% url 'home' %}">{% trans 'صفحه اصلی' %}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'posts' %}">پست ها</a>
+                    <a class="nav-link" href="{% url 'posts' %}">{% trans "پست ها" %}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'about' %}">درباره ما</a>
+                    <a class="nav-link" href="{% url 'about' %}">{% trans 'درباره ما' %}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'contact' %}">تماس با ما</a>
+                    <a class="nav-link" href="{% url 'contact' %}">{% trans "تماس با ما" %}</a>
                 </li>
                 {% category_navbar %}
                 <li class="nav-item">
@@ -67,14 +75,14 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'account:home' %}">
                             <i class="fas fa-user-alt" style="font-size: 14px"></i>
-                            حساب کاربری
+                            {% trans 'حساب کاربری' %}
                         </a>
                     </li>
                 {% else %}
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'login' %}">
                             <i class="fas fa-sign-in-alt" style="font-size: 17px"></i>
-                            ورود | ثبت نام
+                            {% trans 'ورود | ثبت نام' %}
                         </a>
                     </li>
                 {% endif %}

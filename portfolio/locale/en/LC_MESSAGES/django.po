@@ -1,0 +1,75 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-01-15 13:46+0330\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\templates\portfolio\base.html:47
+msgid "منو"
+msgstr "Menu"
+
+#: .\templates\portfolio\base.html:54
+msgid "صفحه اصلی"
+msgstr "Home page"
+
+#: .\templates\portfolio\base.html:57
+msgid "پست ها"
+msgstr "Posts"
+
+#: .\templates\portfolio\base.html:60
+msgid "درباره ما"
+msgstr "About"
+
+#: .\templates\portfolio\base.html:63
+msgid "تماس با ما"
+msgstr "Contact us"
+
+#: .\templates\portfolio\base.html:78
+msgid "حساب کاربری"
+msgstr "account"
+
+#: .\templates\portfolio\base.html:85
+msgid "ورود | ثبت نام"
+msgstr "login | signup"
+
+#: .\templates\portfolio\index.html:12
+msgid "وبلاگ ائلمان"
+msgstr "Elman Blog"
+
+#: .\templates\portfolio\index.html:14
+msgid "اینجا وبلاگ من است"
+msgstr "Here is my blog !"
+
+#: .\templates\portfolio\index.html:44
+msgid " پست های قدیمی تر &larr;"
+msgstr "Older articles &rarr;"
+
+#: .\templates\portfolio\list.html:49
+msgid "ویژه"
+msgstr "Special"
+
+#: .\templates\portfolio\list.html:56
+msgid "نوشته شده توسط"
+msgstr "Written by"
+
+#: .\templates\portfolio\list.html:58
+msgid "در"
+msgstr "at"
+
+#: .\templates\portfolio\list.html:60
+msgid "بازدید ها :"
+msgstr "Hits :"
