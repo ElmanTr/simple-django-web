@@ -96,6 +96,12 @@
 
   {% block header %}
   {% endblock %}
+  <center>
+    <div style="border-radius: 10px;background-color: #b4b4b4;margin: 10px 30% 10px 30% ;">
+      <a href="{% url 'change_lang' %}?lang=fa&next=/fa/{{request.path|slice:'4:'}}"><img height="30" width="30" style="margin: 10px;" src="{% static 'portfolio\img\icons\IR2.ico' %}"></a>
+      <a href="{% url 'change_lang' %}?lang=en&next=/en/{{request.path|slice:'4:'}}"><img height="30" width="30" style="margin: 10px;" src="{% static 'portfolio\img\icons\UK3.svg' %}"></a>
+    </div>
+  </center>
   <aside>
     {% popular_articles %}
     {% hot_articles %}

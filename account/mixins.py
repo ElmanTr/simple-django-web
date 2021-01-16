@@ -5,7 +5,7 @@ from portfolio.models import Data
 class FieldsMixin():
     def dispatch(self,request,*args,**kwargs):
         self.fields = [
-            "title", "paragraph", "slug", "category", "date", "is_special", "status",
+            "title_fa", "paragraph_fa", 'title_en', 'paragraph_en', "slug", "category", "date", "is_special", "status",
         ]
         if request.user.is_superuser:
             self.fields.append("author")

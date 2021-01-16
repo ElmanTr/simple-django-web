@@ -18,18 +18,25 @@ from django.urls import path, include, re_path
 from django.conf.urls.static import static
 from django.conf import settings
 from account.views import Login, Registration, activate
+from portfolio.views import change_lang
+from django.conf.urls.i18n import i18n_patterns
 
 urlpatterns = [
-    path('admin/', admin.site.urls, name='admin'),
     path('', include('django.contrib.auth.urls')),
+    re_path(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,100})/$', activate, name='activate'),
+    path('comment/', include('comment.urls')),
+    re_path(r'^ratings/', include('star_ratings.urls', namespace='ratings')),
+    path('change_lang/', change_lang, name='change_lang'),
+]
+
+urlpatterns += i18n_patterns(
+    path('admin/', admin.site.urls, name='admin'),
     path('', include('portfolio.urls')),
     path('account/',include('account.urls')),
     path('login/', Login.as_view(), name='login'),
-    re_path(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,100})/$', activate, name='activate'),
     path('registry/', Registration.as_view(), name='registry'),
-    path('comment/', include('comment.urls')),
-    re_path(r'^ratings/', include('star_ratings.urls', namespace='ratings')),
-]
+)
+
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 handler404 = 'portfolio.views.page_not_found'

@@ -10,7 +10,7 @@
         <div class="card card-primary" style="padding: 3%;margin-right: 5%;margin-left: 5%;">
              <div class="form-row">
                  <div class="form-group col-md-6 mb-0">
-                    {{ form.title|as_crispy_field }}
+                    {{ form.title_fa|as_crispy_field }}
                  </div>
                  {% if user.is_superuser %}
                  <div class="form-group col-md-6 mb-0">
@@ -18,7 +18,13 @@
                  </div>
                  {% endif %}
             </div>
-            {{ form.paragraph|as_crispy_field }}
+            <div class="form-row">
+                <div class="form-group col-md-6 mb-0">
+                   {{ form.title_en|as_crispy_field }}
+                </div>
+           </div>
+            {{ form.paragraph_fa|as_crispy_field }}
+            {{ form.paragraph_en|as_crispy_field }}
             <div class="form-row">
                 <div class="form-group col-md-4 mb-0">
                     {{ form.category|as_crispy_field }}

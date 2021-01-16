@@ -5,6 +5,7 @@ from django.urls import reverse
 from django.utils.html import format_html
 from django.contrib.contenttypes.fields import GenericRelation
 from comment.models import Comment
+from translated_fields import TranslatedField
 
 # My managers
 class ArticleManager(models.Manager):
@@ -25,7 +26,7 @@ class IPAddress(models.Model):
         return self.ip_address
 
 class Category(models.Model):
-    title = models.CharField(max_length=100, verbose_name="عنوان دسته بندی")
+    title = TranslatedField(models.CharField(max_length=100, verbose_name="عنوان دسته بندی",default=""))
     slug = models.SlugField(max_length=100,unique=True,default='',verbose_name="آدرس دسته بندی")
     parent = models.ForeignKey('self',default=None,null=True,blank=True,on_delete=models.SET_NULL,related_name="children",verbose_name="زیر دسته")
     position = models.IntegerField(verbose_name="جایگاه")
@@ -46,9 +47,9 @@ class Data(models.Model):
     )
     author = models.ForeignKey(User, null=True, on_delete=models.SET_NULL, related_name="projects", verbose_name='نویسنده')
     slug = models.SlugField(max_length=100,unique=True,default='',verbose_name="آدرس مقاله")
-    title = models.CharField(max_length=100, verbose_name="عنوان مقاله")
+    title = TranslatedField(models.CharField(max_length=100, verbose_name="عنوان مقاله",default=""))
     category = models.ManyToManyField(Category,blank=True, verbose_name="دسته بندی", related_name="projects")
-    paragraph = models.TextField(default="",verbose_name="محتوا مقاله")
+    paragraph = TranslatedField(models.TextField(default="",verbose_name="محتوا مقاله"))
     date = models.DateTimeField(default=timezone.now,verbose_name="زمان انتشار مقاله")
     is_special = models.BooleanField(default=False,verbose_name="مقاله ویژه")
     status = models.CharField(max_length=1,choices=STATUS_CHOICES,default='d',verbose_name="وضعیت")

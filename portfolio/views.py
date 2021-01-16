@@ -1,6 +1,6 @@
 from django.views.generic import ListView, DetailView
 from account.models import User
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 #from django.core.paginator import Paginator
 from .models import Data, Category, SlideImage
 from account.mixins import AuthorAccessMixin
@@ -22,7 +22,6 @@ class ProjectList(ListView):
     # context_object_name =
     def get_queryset(self):
         queryset = Data.objects.published()[:5]
-        activate('fa')
         return queryset
     
 
@@ -158,3 +157,8 @@ class SearchList(ListView):
 
 def page_not_found(request,exception=""):
     return render(request,'portfolio/error_404.html',{'exception':exception})
+
+
+def change_lang(request):
+    activate(request.GET.get('lang'))
+    return redirect(request.GET.get('next'))

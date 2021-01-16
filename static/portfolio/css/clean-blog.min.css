@@ -34,7 +34,7 @@ img::-moz-selection{color:#fff;background:0 0}
     #mainNav.is-fixed .navbar-brand:focus,#mainNav.is-fixed .navbar-brand:hover{color:#0085a1}
     #mainNav.is-fixed .navbar-nav>li.nav-item>a{color:#212529}
     #mainNav.is-visible{transform:translate3d(0,100%,0)}}
-header.masthead{margin-bottom:50px;background:no-repeat center center;background-color:#868e96;background-attachment:scroll;position:relative;background-size:cover}
+header.masthead{background:no-repeat center center;background-color:#868e96;background-attachment:scroll;position:relative;background-size:cover}
 header.masthead .overlay{position:absolute;top:0;left:0;height:100%;width:100%;background-color:#212529;opacity:.5}
 header.masthead .page-heading,header.masthead .post-heading,header.masthead .site-heading{padding:200px 0 150px;color:#fff}
 @media only screen and (min-width:768px)
