@@ -7,7 +7,7 @@
     <hr>
     {% for a in articles %}
         <div>
-            <a style="text-decoration: none;" href="{% url 'postsdetail' a.slug %}">{{ a.title }}</a>
+            <a style="text-decoration: none;color: black !important" href="{% url 'postsdetail' a.slug %}">{{ a.title }}</a>
         </div>
     {% endfor %}
 </div>

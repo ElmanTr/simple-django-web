@@ -22,7 +22,6 @@ from portfolio.views import change_lang
 from django.conf.urls.i18n import i18n_patterns
 
 urlpatterns = [
-    path('', include('django.contrib.auth.urls')),
     re_path(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,100})/$', activate, name='activate'),
     path('comment/', include('comment.urls')),
     re_path(r'^ratings/', include('star_ratings.urls', namespace='ratings')),
@@ -30,6 +29,7 @@ urlpatterns = [
 ]
 
 urlpatterns += i18n_patterns(
+    path('', include('django.contrib.auth.urls')),
     path('admin/', admin.site.urls, name='admin'),
     path('', include('portfolio.urls')),
     path('account/',include('account.urls')),

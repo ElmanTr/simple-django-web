@@ -8,7 +8,7 @@
 
 {% block site_head %}
     <div class="site-heading">
-        <h1 style="font-family: 'B Titr'">{% trans 'دسته بندی' %} {{ category.title }}</h1>
+        <h1 style="font-family: 'B Titr'">{% if LANGUAGE_CODE == 'fa' %}{% trans 'دسته بندی' %} {{ category.title }}{% else %}{{ category.title }} {% trans 'دسته بندی' %}{% endif %}</h1>
         <br>
         <span class="subheading" style="font-family: 'B Titr'"></span>
     </div>
