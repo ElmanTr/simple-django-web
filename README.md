@@ -13,6 +13,8 @@ Next go to the project directory in the terminal and type:
 
 4.pip install -r requirements.txt
 
+5.python manage.py compilemessages
+
 5.python manage.py runserver
 
 Done ! Enjoy ! 
