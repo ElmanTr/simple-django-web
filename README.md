@@ -15,6 +15,6 @@ Next go to the project directory in the terminal and type:
 
 5.python manage.py compilemessages
 
-5.python manage.py runserver
+6.python manage.py runserver
 
 Done ! Enjoy ! 
