@@ -1,0 +1,12 @@
+.uploadphoto {
+    background-color: rgb(164, 255, 152);
+    height: 150px;
+    width: 60%;
+    padding: 5%;
+    padding-right: 16%;
+    border-radius: 10px;
+}
+
+.uploadphoto:hover {
+    background-color: rgb(194, 253, 186);
+}

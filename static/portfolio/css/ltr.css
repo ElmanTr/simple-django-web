@@ -181,3 +181,7 @@ aside {
     box-shadow: 3px 3px #7d7d7d;
     margin: 15px;
 }
+
+.container, .container-lg, .container-md, .container-sm, .container-xl {
+    max-width: 1240px !important;
+}
