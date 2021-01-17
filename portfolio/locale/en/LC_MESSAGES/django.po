@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-15 13:46+0330\n"
+"POT-Creation-Date: 2021-01-17 10:45+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,21 +18,129 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+#: .\comment\templates\comment\comments\create_comment.html:37
+msgid "ورود"
+msgstr "login"
+
+#: .\comment\templates\comment\comments\create_comment.html:39
+msgid " برای ارسال دیدگاه !"
+msgstr "to post a comment!"
+
+#: .\portfolio\models.py:20
+msgid "آدرس آی پی"
+msgstr "IP address"
+
+#: .\portfolio\models.py:30
+msgid "عنوان دسته بندی"
+msgstr "category title"
+
+#: .\portfolio\models.py:31
+msgid "آدرس دسته بندی"
+msgstr "category slug"
+
+#: .\portfolio\models.py:32
+msgid "زیر دسته"
+msgstr "subcategory"
+
+#: .\portfolio\models.py:36 .\portfolio\models.py:52 .\portfolio\models.py:74
+#: .\templates\portfolio\category.html:11
+msgid "دسته بندی"
+msgstr "category"
+
+#: .\portfolio\models.py:37
+msgid "دسته بندی ها"
+msgstr "categories"
+
+#: .\portfolio\models.py:49
+msgid "نویسنده"
+msgstr "author"
+
+#: .\portfolio\models.py:50
+msgid "آدرس مقاله"
+msgstr "slug"
+
+#: .\portfolio\models.py:51
+msgid "عنوان مقاله"
+msgstr "article title"
+
+#: .\portfolio\models.py:53
+msgid "محتوا مقاله"
+msgstr "content"
+
+#: .\portfolio\models.py:54
+msgid "زمان انتشار مقاله"
+msgstr "publication date"
+
+#: .\portfolio\models.py:55
+msgid "مقاله ویژه"
+msgstr "special article"
+
+#: .\portfolio\models.py:56
+msgid "وضعیت"
+msgstr "status"
+
+#: .\portfolio\models.py:58
+#, fuzzy
+#| msgid "بازدید ها :"
+msgid "بازدید ها"
+msgstr "Hits"
+
+#: .\portfolio\models.py:61
+msgid "مقاله"
+msgstr "article"
+
+#: .\portfolio\models.py:62 .\templates\registration\sidebar.html:38
+msgid "مقالات"
+msgstr "articles"
+
+#: .\portfolio\models.py:81
+msgid "جایگاه"
+msgstr "position"
+
+#: .\portfolio\models.py:84
+msgid "اسلاید"
+msgstr "slide"
+
+#: .\portfolio\models.py:85
+msgid "اسلاید ها"
+msgstr "slides"
+
+#: .\portfolio\models.py:90
+msgid "عکس"
+msgstr "photo"
+
+#: .\portfolio\templatetags\base_tags.py:13 .\templates\portfolio\index.html:12
+#: .\templates\registration\sidebar.html:13
+msgid "وبلاگ ائلمان"
+msgstr "Elman Blog"
+
+#: .\portfolio\templatetags\base_tags.py:26
+msgid "مقالات پربازدید ماه"
+msgstr "Most visited articles of the month"
+
+#: .\portfolio\templatetags\base_tags.py:35
+msgid "مقالات داغ ماه"
+msgstr "Hot articles of the month"
+
+#: .\templates\portfolio\about.html:22 .\templates\portfolio\base.html:60
+msgid "درباره ما"
+msgstr "About"
+
+#: .\templates\portfolio\about.html:23
+msgid "ما چه کسی هستیم ؟"
+msgstr "Who we are ?"
+
 #: .\templates\portfolio\base.html:47
 msgid "منو"
 msgstr "Menu"
 
-#: .\templates\portfolio\base.html:54
+#: .\templates\portfolio\base.html:54 .\templates\registration\base.html:59
 msgid "صفحه اصلی"
 msgstr "Home page"
 
-#: .\templates\portfolio\base.html:57
+#: .\templates\portfolio\base.html:57 .\templates\portfolio\post.html:11
 msgid "پست ها"
 msgstr "Posts"
-
-#: .\templates\portfolio\base.html:60
-msgid "درباره ما"
-msgstr "About"
 
 #: .\templates\portfolio\base.html:63
 msgid "تماس با ما"
@@ -46,9 +154,23 @@ msgstr "account"
 msgid "ورود | ثبت نام"
 msgstr "login | signup"
 
-#: .\templates\portfolio\index.html:12
-msgid "وبلاگ ائلمان"
-msgstr "Elman Blog"
+#: .\templates\portfolio\category.html:20 .\templates\portfolio\post.html:20
+msgid "&rarr; پست های جدید تر"
+msgstr "Newer articles &larr;"
+
+#: .\templates\portfolio\category.html:24 .\templates\portfolio\post.html:24
+#, fuzzy
+#| msgid " پست های قدیمی تر &larr;"
+msgid "پست های قدیمی تر &larr;"
+msgstr "Older articles &rarr;"
+
+#: .\templates\portfolio\contact.html:22
+msgid "راه های ارتباط با ما"
+msgstr "Ways to contact us"
+
+#: .\templates\portfolio\contact.html:23
+msgid "میتوانید سوالات خود را بپرسید"
+msgstr "You can ask your questions"
 
 #: .\templates\portfolio\index.html:14
 msgid "اینجا وبلاگ من است"
@@ -73,3 +195,45 @@ msgstr "at"
 #: .\templates\portfolio\list.html:60
 msgid "بازدید ها :"
 msgstr "Hits :"
+
+#: .\templates\portfolio\post.html:13
+msgid "تمامی پست های سایت"
+msgstr "All blog posts"
+
+#: .\templates\registration\base.html:62
+msgid "نمایش صفحه اصلی سایت"
+msgstr "View the site home page"
+
+#: .\templates\registration\base.html:205
+msgid "کلیه حقوق محفوظ است"
+msgstr "All rights reserved"
+
+#: .\templates\registration\base.html:205
+#, fuzzy
+#| msgid "صفحه اصلی"
+msgid "صفحه اصلی وبلاگ"
+msgstr "Home page"
+
+#: .\templates\registration\sidebar.html:46
+msgid "لیست مقالات"
+msgstr "list of articles"
+
+#: .\templates\registration\sidebar.html:52
+msgid "افزودن مقاله"
+msgstr "add article"
+
+#: .\templates\registration\sidebar.html:62
+msgid "پروفایل"
+msgstr "profile"
+
+#: .\templates\registration\sidebar.html:70
+msgid "تغییر رمز عبور"
+msgstr "change Password"
+
+#: .\templates\registration\sidebar.html:79
+msgid "خرید اشتراک ویژه"
+msgstr "special subscription"
+
+#: .\templates\registration\sidebar.html:87
+msgid "خروج"
+msgstr "Exit"

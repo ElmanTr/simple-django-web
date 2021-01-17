@@ -1,9 +1,11 @@
 {% load static %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
 
 <link href="{% static 'portfolio/css/rtl.css' %}">
 
         <li class="nav-item">
-            <a class="nav-link" href="">موضوعات</a>
+            <a class="nav-link" href="">{% if LANGUAGE_CODE == 'fa' %}موضوعات{% elif LANGUAGE_CODE == 'en' %}categories{% endif %}</a>
             <ul>
                 {% for x in category %}
                     {% if x.parent == None %}

@@ -62,7 +62,7 @@ class PostsPreview(AuthorAccessMixin,DetailView):
     template_name = 'portfolio/postdetail.html'
 
 class PostList(ListView):
-    paginate_by = 8
+    paginate_by = 4
     queryset = Data.objects.published()
     template_name = 'portfolio/post.html'
 
@@ -83,7 +83,7 @@ def base(request):
     return render(request, 'portfolio/base.html')
 
 class CategoryList(ListView):
-    paginate_by = 4
+    paginate_by = 5
     template_name = 'portfolio/category.html'
 
     def get_queryset(self):

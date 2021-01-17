@@ -1,9 +1,11 @@
 {% load static %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
 
 <link href="{% static 'portfolio/css/rtl.css' %}">
 
 <div class="best_authors">
-    <h2 class="h4">فعال ترین نویسنده های ماه</h2>
+    <h2 class="h4">{% if LANGUAGE_CODE == 'fa' %}فعال ترین نویسنده های ماه{% elif LANGUAGE_CODE == 'en' %}The most active authors of the month{% endif %}</h2>
     <hr>
     {% for a in author %}
         <div>

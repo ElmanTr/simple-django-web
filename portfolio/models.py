@@ -6,6 +6,7 @@ from django.utils.html import format_html
 from django.contrib.contenttypes.fields import GenericRelation
 from comment.models import Comment
 from translated_fields import TranslatedField
+from django.utils.translation import gettext_lazy as _
 
 # My managers
 class ArticleManager(models.Manager):
@@ -16,7 +17,7 @@ class ArticleManager(models.Manager):
 # Create your models here.
 
 class IPAddress(models.Model):
-    ip_address = models.GenericIPAddressField(verbose_name='آدرس آی پی')
+    ip_address = models.GenericIPAddressField(verbose_name=_('آدرس آی پی'))
 
     class Meta:
         verbose_name = "آی پی"
@@ -26,14 +27,14 @@ class IPAddress(models.Model):
         return self.ip_address
 
 class Category(models.Model):
-    title = TranslatedField(models.CharField(max_length=100, verbose_name="عنوان دسته بندی",default=""))
-    slug = models.SlugField(max_length=100,unique=True,default='',verbose_name="آدرس دسته بندی")
-    parent = models.ForeignKey('self',default=None,null=True,blank=True,on_delete=models.SET_NULL,related_name="children",verbose_name="زیر دسته")
+    title = TranslatedField(models.CharField(max_length=100, verbose_name=_("عنوان دسته بندی"),default=""))
+    slug = models.SlugField(max_length=100,unique=True,default='',verbose_name=_("آدرس دسته بندی"))
+    parent = models.ForeignKey('self',default=None,null=True,blank=True,on_delete=models.SET_NULL,related_name="children",verbose_name=_("زیر دسته"))
     position = models.IntegerField(verbose_name="جایگاه")
 
     class Meta:
-        verbose_name = "دسته بندی"
-        verbose_name_plural = "دسته بندی ها"
+        verbose_name = _("دسته بندی")
+        verbose_name_plural = _("دسته بندی ها")
         ordering = ['parent__id','position']
 
     def __str__(self):
@@ -45,20 +46,20 @@ class Data(models.Model):
         ('p', 'منتشر شده'),
         ('i', 'در حال بررسی'),
     )
-    author = models.ForeignKey(User, null=True, on_delete=models.SET_NULL, related_name="projects", verbose_name='نویسنده')
-    slug = models.SlugField(max_length=100,unique=True,default='',verbose_name="آدرس مقاله")
-    title = TranslatedField(models.CharField(max_length=100, verbose_name="عنوان مقاله",default=""))
-    category = models.ManyToManyField(Category,blank=True, verbose_name="دسته بندی", related_name="projects")
-    paragraph = TranslatedField(models.TextField(default="",verbose_name="محتوا مقاله"))
-    date = models.DateTimeField(default=timezone.now,verbose_name="زمان انتشار مقاله")
-    is_special = models.BooleanField(default=False,verbose_name="مقاله ویژه")
-    status = models.CharField(max_length=1,choices=STATUS_CHOICES,default='d',verbose_name="وضعیت")
+    author = models.ForeignKey(User, null=True, on_delete=models.SET_NULL, related_name="projects", verbose_name=_('نویسنده'))
+    slug = models.SlugField(max_length=100,unique=True,default='',verbose_name=_("آدرس مقاله"))
+    title = TranslatedField(models.CharField(max_length=100, verbose_name=_("عنوان مقاله"),default=""))
+    category = models.ManyToManyField(Category,blank=True, verbose_name=_("دسته بندی"), related_name="projects")
+    paragraph = TranslatedField(models.TextField(default="",verbose_name=_("محتوا مقاله")))
+    date = models.DateTimeField(default=timezone.now,verbose_name=_("زمان انتشار مقاله"))
+    is_special = models.BooleanField(default=False,verbose_name=_("مقاله ویژه"))
+    status = models.CharField(max_length=1,choices=STATUS_CHOICES,default='d',verbose_name=_("وضعیت"))
     comments = GenericRelation(Comment)
-    hits = models.ManyToManyField(IPAddress,through='ArticleHit', blank=True, related_name='hits', verbose_name='بازدید ها')
+    hits = models.ManyToManyField(IPAddress,through='ArticleHit', blank=True, related_name='hits', verbose_name=_('بازدید ها'))
 
     class Meta:
-        verbose_name = "مقاله"
-        verbose_name_plural = "مقالات"
+        verbose_name = _("مقاله")
+        verbose_name_plural = _("مقالات")
         ordering = ['-date']
 
     def __str__(self):
@@ -70,23 +71,23 @@ class Data(models.Model):
 
     def category_to_str(self):
         return " , ".join([category.title for category in self.category.all()])
-    category_to_str.short_description = 'دسته بندی'
+    category_to_str.short_description = _('دسته بندی')
 
     objects = ArticleManager()
 
 
 class SlideImage(models.Model):
     image = models.ImageField(upload_to='media')
-    position = models.IntegerField(unique=True,verbose_name="جایگاه")
+    position = models.IntegerField(unique=True,verbose_name=_("جایگاه"))
 
     class Meta:
-        verbose_name = "اسلاید"
-        verbose_name_plural = "اسلاید ها"
+        verbose_name = _("اسلاید")
+        verbose_name_plural = _("اسلاید ها")
         ordering = ['position']
 
     def image_tag(self):
         return format_html("<img style='width:180px;height:130px;border-radius:10px' src='{}'>".format(self.image.url))
-    image_tag.short_description = 'عکس'
+    image_tag.short_description = _('عکس')
 
 class ArticleHit(models.Model):
     article = models.ForeignKey(Data, on_delete=models.CASCADE)

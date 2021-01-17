@@ -65,7 +65,7 @@
                 {% category_navbar %}
                 <li class="nav-item">
                     <form action="{% url 'search' %}" method="GET">
-                        <input required type="text" style="border-radius: 10px;border: none;font-size: medium;padding: 3px;" placeholder=" تایپ کنید..." name="search">
+                        <input required type="text" style="border-radius: 10px;border: none;font-size: medium;padding: 3px;" {% if LANGUAGE_CODE == 'fa' %}placeholder=" تایپ کنید..."{% elif LANGUAGE_CODE == 'en' %}placeholder=" search..."{% endif %} name="search">
                         <button style="background-color: #777676;border-radius: 10px;border: none;margin: 5px;" type="submit"><i class="fa fa-search" style="color: white;"></i></button>
                     </form>
                 </li>

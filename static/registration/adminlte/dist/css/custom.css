@@ -15,9 +15,6 @@ body h1 {
 	font-weight:800;
 }
 
-*{
-    direction: rtl !important;
-}
 .layout-fixed .main-sidebar {
     right: 0;
 }

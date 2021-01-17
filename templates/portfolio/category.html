@@ -1,12 +1,14 @@
 {% extends 'portfolio/list.html' %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
 
 {% block page_title %}
-<title>Elman Blog | دسته بندی {{ category.title }}</title>
+<title>Elman Blog | {{ category.title }} category</title>
 {% endblock %}
 
 {% block site_head %}
     <div class="site-heading">
-        <h1 style="font-family: 'B Titr'">دسته بندی {{ category.title }}</h1>
+        <h1 style="font-family: 'B Titr'">{% trans 'دسته بندی' %} {{ category.title }}</h1>
         <br>
         <span class="subheading" style="font-family: 'B Titr'"></span>
     </div>
@@ -15,11 +17,11 @@
 {% block pager %}
 <div class="clearfix pager-botton">
     {% if page_obj.has_previous %}
-        <a class="btn btn-primary float-right" href="{% url 'category' category.slug %}?page={{ page_obj.previous_page_number }}" style="margin: 10px"> &rarr; پست های جدید تر </a>
+        <a class="btn btn-primary float-right" href="{% url 'category' category.slug %}?page={{ page_obj.previous_page_number }}" style="margin: 10px"> {% trans '&rarr; پست های جدید تر' %} </a>
     {% endif %}
 
     {% if page_obj.has_next %}
-        <a class="btn btn-primary float-left" href="{% url 'category' category.slug %}?page={{ page_obj.next_page_number }}" style="margin: 10px"> پست های قدیمی تر &larr;</a>
+        <a class="btn btn-primary float-left" href="{% url 'category' category.slug %}?page={{ page_obj.next_page_number }}" style="margin: 10px"> {% trans 'پست های قدیمی تر &larr;' %}</a>
     {% endif %}
 </div>
 {% endblock %}

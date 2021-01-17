@@ -1,5 +1,8 @@
 {% extends 'portfolio/base.html' %}
 {% load static %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+
 {% block top %}
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -16,8 +19,8 @@
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           <div class="page-heading">
-            <h1>راه با ما</h1>
-            <span class="subheading">میتوانید سوالات خود را بپرسید!</span>
+            <h1>{% trans 'راه های ارتباط با ما' %}</h1>
+            <span class="subheading">{% trans 'میتوانید سوالات خود را بپرسید' %}!</span>
           </div>
         </div>
       </div>

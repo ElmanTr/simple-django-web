@@ -1,4 +1,6 @@
 {% load static %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
 
 <!DOCTYPE html>
 <html>
@@ -31,9 +33,16 @@
   <!-- Bootstrap 4 RTL -->
   <link rel="stylesheet" href="https://cdn.rtlcss.com/bootstrap/v4.2.1/css/bootstrap.min.css">
   <!-- Custom style for RTL -->
-  <link rel="stylesheet" href="{% static 'registration/adminlte/dist/css/custom.css' %}">
 
-  <link rel="stylesheet" href="{% static 'registration/adminlte/dist/css/mycss.css' %}"
+  <link rel="stylesheet" href="{% static 'registration/adminlte/dist/css/mycss.css' %}">
+
+  <!-- RTL & LTR -->
+  
+  {% if LANGUAGE_CODE == 'fa' %}
+    <link rel="stylesheet" href="{% static 'registration/adminlte/dist/css/custom.css' %}">
+  {% elif LANGUAGE_CODE == 'en' %}
+    <link rel="stylesheet" href="{% static 'registration/adminlte/dist/css/ltr.css' %}">
+  {% endif %}
 
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -47,10 +56,10 @@
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="{% url 'account:home' %}" class="nav-link">صفحه اصلی</a>
+        <a href="{% url 'account:home' %}" class="nav-link">{% trans 'صفحه اصلی' %}</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="{% url 'home' %}" target="_blank" class="nav-link">نمایش صفحه اصلی سایت</a>
+        <a href="{% url 'home' %}" target="_blank" class="nav-link">{% trans 'نمایش صفحه اصلی سایت' %}</a>
       </li>
     </ul>
 
@@ -193,10 +202,7 @@
   </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
-    <strong> کلیه حقوق محفوظ است .<a href="{% url 'home' %}"> صفحه اصلی وبلاگ </a></strong>
-    <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 1.0.0
-    </div>
+    <strong> {% trans "کلیه حقوق محفوظ است" %}<a href="{% url 'home' %}"> {% trans 'صفحه اصلی وبلاگ' %} </a></strong>
   </footer>
 
   <!-- Control Sidebar -->
