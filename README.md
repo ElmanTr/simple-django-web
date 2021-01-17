@@ -1,5 +1,5 @@
 # simple-django-web
-My first simple django web! with some features ! ( Not very simple :\ )
+My first django web and a simple django blog! with some features ! ( Not very simple :\ )
 
 Download the project. Then open the source code directory and paste .env-sample to .env !
 
