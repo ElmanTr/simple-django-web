@@ -18,7 +18,9 @@ Next go to the project directory in the terminal and type:
 6.python manage.py runserver
 
 
-Note: Unfortunately, the folder names of this project are not correct and related!
+Note:
+
+Unfortunately, the folder names of this project are not correct and related!
 
 Because this project was not previously a django blog project and later became it, and for some reason we could not change the names.
 
