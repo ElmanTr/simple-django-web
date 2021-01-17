@@ -21,10 +21,8 @@ Next go to the project directory in the terminal and type:
 Note:
 
 Unfortunately, the folder names of this project are not correct and related!
-
-Because this project was not previously a django blog project and later became it, and for some reason we could not change the names.
-
-Consider myportfolio folder as config and portfolio folder as django-blog. thanks!
+because this project was not previously a django blog project and later became it, and for some reason we could not change the names.
+consider myportfolio folder as config and portfolio folder as django-blog. thanks!
 
 
 Done ! Enjoy ! 
