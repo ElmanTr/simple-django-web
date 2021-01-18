@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-17 10:45+0330\n"
+"POT-Creation-Date: 2021-01-18 21:08+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -43,7 +43,7 @@ msgid "زیر دسته"
 msgstr "subcategory"
 
 #: .\portfolio\models.py:36 .\portfolio\models.py:52 .\portfolio\models.py:74
-#: .\templates\portfolio\category.html:11
+#: .\templates\portfolio\category.html:11 .\templates\registration\home.html:19
 msgid "دسته بندی"
 msgstr "category"
 
@@ -51,7 +51,7 @@ msgstr "category"
 msgid "دسته بندی ها"
 msgstr "categories"
 
-#: .\portfolio\models.py:49
+#: .\portfolio\models.py:49 .\templates\registration\home.html:20
 msgid "نویسنده"
 msgstr "author"
 
@@ -59,7 +59,7 @@ msgstr "author"
 msgid "آدرس مقاله"
 msgstr "slug"
 
-#: .\portfolio\models.py:51
+#: .\portfolio\models.py:51 .\templates\registration\home.html:17
 msgid "عنوان مقاله"
 msgstr "article title"
 
@@ -71,17 +71,15 @@ msgstr "content"
 msgid "زمان انتشار مقاله"
 msgstr "publication date"
 
-#: .\portfolio\models.py:55
+#: .\portfolio\models.py:55 .\templates\registration\home.html:22
 msgid "مقاله ویژه"
 msgstr "special article"
 
-#: .\portfolio\models.py:56
+#: .\portfolio\models.py:56 .\templates\registration\home.html:23
 msgid "وضعیت"
 msgstr "status"
 
 #: .\portfolio\models.py:58
-#, fuzzy
-#| msgid "بازدید ها :"
 msgid "بازدید ها"
 msgstr "Hits"
 
@@ -159,8 +157,6 @@ msgid "&rarr; پست های جدید تر"
 msgstr "Newer articles &larr;"
 
 #: .\templates\portfolio\category.html:24 .\templates\portfolio\post.html:24
-#, fuzzy
-#| msgid " پست های قدیمی تر &larr;"
 msgid "پست های قدیمی تر &larr;"
 msgstr "Older articles &rarr;"
 
@@ -209,14 +205,89 @@ msgid "کلیه حقوق محفوظ است"
 msgstr "All rights reserved"
 
 #: .\templates\registration\base.html:205
-#, fuzzy
-#| msgid "صفحه اصلی"
 msgid "صفحه اصلی وبلاگ"
 msgstr "Home page"
 
+#: .\templates\registration\home.html:6
 #: .\templates\registration\sidebar.html:46
 msgid "لیست مقالات"
 msgstr "list of articles"
+
+#: .\templates\registration\home.html:18
+msgid "خلاصه"
+msgstr "summary"
+
+#: .\templates\registration\home.html:21
+msgid "زمان انتشار"
+msgstr "publication date"
+
+#: .\templates\registration\home.html:47
+msgid "منتشر شده"
+msgstr "published"
+
+#: .\templates\registration\home.html:48
+msgid "نمایش در سایت"
+msgstr "view in blog"
+
+#: .\templates\registration\home.html:50
+msgid "در حال بررسی"
+msgstr "pending"
+
+#: .\templates\registration\home.html:52 .\templates\registration\home.html:56
+msgid "پیش نمایش در سایت"
+msgstr "preview in blog"
+
+#: .\templates\registration\home.html:55
+msgid "پیش نویس"
+msgstr "draft"
+
+#: .\templates\registration\home.html:65
+msgid "شما هیچ مقاله ای ندارید"
+msgstr "You don't have any articles"
+
+#: .\templates\registration\login.html:112
+msgid "ورود با گوگل"
+msgstr "login with Google"
+
+#: .\templates\registration\password_change_form.html:7
+msgid "تغییر گذرواژه"
+msgstr "change Password"
+
+#: .\templates\registration\password_change_form.html:26
+#: .\templates\registration\password_reset_confirm.html:106
+msgid "تایید"
+msgstr "Submit"
+
+#: .\templates\registration\password_reset_confirm.html:45
+#: .\templates\registration\password_reset_confirm.html:83
+#: .\templates\registration\sidebar.html:70
+msgid "تغییر رمز عبور"
+msgstr "change Password"
+
+#: .\templates\registration\password_reset_confirm.html:112
+msgid "لینک منقضی شده است"
+msgstr "The link has expired"
+
+#: .\templates\registration\password_reset_form.html:45
+#: .\templates\registration\password_reset_form.html:75
+msgid "بازیابی رمز عبور"
+msgstr "Password recovery"
+
+#: .\templates\registration\password_reset_form.html:89
+msgid "ارسال لینک بازیابی"
+msgstr "Send recovery email"
+
+#: .\templates\registration\profile.html:8
+msgid "پروفایل کاربری"
+msgstr "Profile"
+
+#: .\templates\registration\profile.html:36
+msgid "شما اشتراک ویژه دارید"
+msgstr "You have special subscription"
+
+#: .\templates\registration\profile.html:56
+msgid "ویرایش اطلاعات"
+msgstr "Edit information"
 
 #: .\templates\registration\sidebar.html:52
 msgid "افزودن مقاله"
@@ -226,10 +297,6 @@ msgstr "add article"
 msgid "پروفایل"
 msgstr "profile"
 
-#: .\templates\registration\sidebar.html:70
-msgid "تغییر رمز عبور"
-msgstr "change Password"
-
 #: .\templates\registration\sidebar.html:79
 msgid "خرید اشتراک ویژه"
 msgstr "special subscription"
@@ -237,3 +304,7 @@ msgstr "special subscription"
 #: .\templates\registration\sidebar.html:87
 msgid "خروج"
 msgstr "Exit"
+
+#: .\templates\registration\signup.html:143
+msgid "ثبت نام با گوگل"
+msgstr "signup with Google"

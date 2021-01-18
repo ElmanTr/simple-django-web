@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'star_ratings',
     'django.contrib.humanize',
     'translated_fields',
+    'social_django',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -65,8 +66,12 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'portfolio.middleware.SaveIPAddressMiddleware'
+    'portfolio.middleware.SaveIPAddressMiddleware',
 ]
+
+MIDDLEWARE_CLASSES = (
+    'social_auth.middleware.SocialAuthExceptionMiddleware',
+)
 
 ROOT_URLCONF = 'myportfolio.urls'
 
@@ -122,12 +127,14 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
-LANGUAGES = [
+LANGUAGES = (
     ('fa','Persian'),
     ('en','English'),
-]
+)
 
-LANGUAGE_CODE = 'fa-ir'
+DEFAULT_LANGUAGE = 1
+
+LANGUAGE_CODE = 'fa'
 
 TIME_ZONE = 'Asia/Tehran'
 
@@ -171,3 +178,11 @@ STAR_RATINGS_STAR_HEIGHT = 18
 LOCALE_PATHS = [
     os.path.join(BASE_DIR, 'portfolio\locale'),
 ]
+
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.google.GoogleOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
+SOCIAL_AUTH_URL_NAMESPACE = 'social'
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = config('SOCIAL_AUTH_GOOGLE_OAUTH2_KEY')
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = config('SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET')

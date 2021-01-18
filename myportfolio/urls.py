@@ -26,6 +26,7 @@ urlpatterns = [
     path('comment/', include('comment.urls')),
     re_path(r'^ratings/', include('star_ratings.urls', namespace='ratings')),
     path('change_lang/', change_lang, name='change_lang'),
+    path('', include('social_django.urls', namespace='social')),
 ]
 
 urlpatterns += i18n_patterns(

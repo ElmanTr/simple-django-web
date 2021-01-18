@@ -1,7 +1,9 @@
 {% extends 'registration/base.html' %}
+{% load i18n %}
+
 {% load static %}
 {% block title %}
-    لیست مقالات
+    {% trans 'لیست مقالات' %}
 {% endblock %}
 {% block main %}
         <div class="card card-primary" style="padding: 2%;margin-right: 4%;margin-left: 4%;">
@@ -12,13 +14,13 @@
                     {% if object_list.count > 0 %}
                         <thead>
                         <tr>
-                            <th>عنوان مقاله</th>
-                            <th>خلاصه</th>
-                            <th>دسته بندی</th>
-                            <th>نویسنده</th>
-                            <th>زمان انتشار</th>
-                            <th>مقاله ویژه</th>
-                            <th>وضعیت</th>
+                            <th>{% trans 'عنوان مقاله' %}</th>
+                            <th>{% trans 'خلاصه' %}</th>
+                            <th>{% trans 'دسته بندی' %}</th>
+                            <th>{% trans 'نویسنده' %}</th>
+                            <th>{% trans 'زمان انتشار' %}</th>
+                            <th>{% trans 'مقاله ویژه' %}</th>
+                            <th>{% trans 'وضعیت' %}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -42,16 +44,16 @@
                                 </td>
                                 <td>
                                     {% if x.status == 'p' %}
-                                        <p class="badge badge-success">منتشر شده</p>
-                                        <a target="_blank" class="badge badge-primary" href="{% url 'postsdetail'  x.slug %}">نمایش در سایت</a>
+                                        <p class="badge badge-success">{% trans 'منتشر شده' %}</p>
+                                        <a target="_blank" class="badge badge-primary" href="{% url 'postsdetail'  x.slug %}">{% trans 'نمایش در سایت' %}</a>
                                     {% elif x.status == 'i' %}
-                                        <p class="badge" style="background: #ffd400">در حال بررسی</p>
+                                        <p class="badge" style="background: #ffd400">{% trans 'در حال بررسی' %}</p>
                                         {% if user.is_superuser %}
-                                            <a target="_blank" class="badge badge-secondary" href="{% url 'postspreview'  x.pk %}">پیش نمایش در سایت</a>
+                                            <a target="_blank" class="badge badge-secondary" href="{% url 'postspreview'  x.pk %}">{% trans "پیش نمایش در سایت" %}</a>
                                         {% endif %}
                                     {% else %}
-                                        <p class="badge badge-danger">پیش نویس</p>
-                                        <a target="_blank" class="badge badge-secondary" href="{% url 'postspreview'  x.pk %}">پیش نمایش در سایت</a>
+                                        <p class="badge badge-danger">{% trans 'پیش نویس' %}</p>
+                                        <a target="_blank" class="badge badge-secondary" href="{% url 'postspreview'  x.pk %}">{% trans "پیش نمایش در سایت" %}</a>
                                     {% endif %}
                                     {% if user.is_superuser %}
                                         <a class="badge text-danger" href="{% url 'account:article-delete' x.pk %}" style="margin-top: 15px">حذف مقاله</a>
@@ -60,7 +62,7 @@
                             </tr>
                         {% endfor %}
                     {% else %}
-                        <h5>شما هیچ مقاله ای ندارید!</h5>
+                        <h5>{% trans 'شما هیچ مقاله ای ندارید' %}!</h5>
                     {% endif %}
                     </tbody>
                 </table>
