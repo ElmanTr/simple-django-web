@@ -127,14 +127,33 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
-LANGUAGES = (
-    ('fa','Persian'),
-    ('en','English'),
+# in order to have better support for persian
+# try:
+#     import locale
+#     locale.setlocale(locale.LC_ALL, "fa_IR.UTF-8")
+# except Exception:
+#     pass
+
+from django.utils.translation import ugettext_lazy as _
+
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, 'portfolio\locale'),
 )
 
-DEFAULT_LANGUAGE = 1
+LANGUAGES = (
+    ('fa',_('Persian')),
+    ('en',_('English')),
+)
 
-LANGUAGE_CODE = 'fa'
+# this bellow aren't mandatory
+MODELTRANSLATION_DEFAULT_LANGUAGE = 'fa'
+MODELTRANSLATION_LANGUAGES = ('fa', 'en',)
+
+# The prepopulated_fields admin property to automatically fill slug(usually)
+MODELTRANSLATION_DEFAULT_FALLBACK = 'fa'
+
+
+LANGUAGE_CODE = 'fa-ir'
 
 TIME_ZONE = 'Asia/Tehran'
 
@@ -173,11 +192,6 @@ STAR_RATINGS_STAR_HEIGHT = 18
 # STAR_RATINGS_RANGE = 5
 # STAR_RATINGS_ANONYMOUS = True
 # STAR_RATINGS_RERATE = False
-
-
-LOCALE_PATHS = [
-    os.path.join(BASE_DIR, 'portfolio\locale'),
-]
 
 AUTHENTICATION_BACKENDS = (
     'social_core.backends.google.GoogleOAuth2',

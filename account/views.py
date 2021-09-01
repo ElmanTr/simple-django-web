@@ -16,9 +16,9 @@ class ArticleList(AuthorsUserAccessMixin,ListView):
 
     def get_queryset(self):
         if self.request.user.is_superuser:
-                return Data.objects.all()
+            return Data.objects.all()
         else:
-                return Data.objects.filter(author=self.request.user)
+            return Data.objects.filter(author=self.request.user)
 
 class ArticleCreate(AuthorsUserAccessMixin,FormValidMixin,FieldsMixin,CreateView):
     model = Data

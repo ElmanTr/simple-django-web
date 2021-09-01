@@ -5,91 +5,91 @@
 
 
 <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <!-- Brand Logo -->
-    <a href="{% url 'home' %}" class="brand-link">
-      <img src="{% static 'registration/adminlte/dist/img/AdminLTELogo.png' %}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-           style="opacity: .8">
-      <span class="brand-text">{% trans 'وبلاگ ائلمان' %}</span>
-    </a>
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <!-- Brand Logo -->
+  <a href="{% url 'home' %}" class="brand-link">
+    <img src="{% static 'registration/adminlte/dist/img/AdminLTELogo.png' %}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+          style="opacity: .8">
+    <span class="brand-text">{% trans 'وبلاگ ائلمان' %}</span>
+  </a>
 
-    <!-- Sidebar -->
-    <div class="sidebar">
-      <!-- Sidebar user panel (optional) -->
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
-          <img style="height: 40px;width: 40px;" src="{% if user.photo %}{{ user.photo.url }}{% else %}{% gravatar_url user.email 150 %}{% endif %}" class="img-circle elevation-2" alt="{{ user.email }}">
-        </div>
-        <div class="info">
-          <a href="#" class="d-block">{{ user.get_full_name }}</a>
-        </div>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <!-- Sidebar user panel (optional) -->
+    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+      <div class="image">
+        <img style="height: 40px;width: 40px;" src="{% if user.photo %}{{ user.photo.url }}{% else %}{% gravatar_url user.email 150 %}{% endif %}" class="img-circle elevation-2" alt="{{ user.email }}">
       </div>
-
-      <!-- Sidebar Menu -->
-      <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-        {% if user.is_superuser or user.is_author %}
-          <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link">
-              <i class="fas fa-copy"></i>
-              <p>
-                {% trans 'مقالات' %}
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{% url 'account:home' %}" class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}">
-                  <i class="fa fa-list nav-icon"></i>
-                  <p>{% trans 'لیست مقالات' %}</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{% url 'account:article-create' %}" class="nav-link {% if request.resolver_match.url_name == 'article-create' %}active{% endif %}">
-                  <i class="fa fa-edit nav-icon"></i>
-                  <p>{% trans 'افزودن مقاله' %}</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-        {% endif %}
-          <li class="nav-item">
-            <a href="{% url 'account:profile' %}" class="nav-link {% if request.resolver_match.url_name == 'profile' %}active{% endif %}">
-              <i class="fa fa-user-circle"></i>
-              <p>
-                {% trans 'پروفایل' %}
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="{% url 'password_change' %}" class="nav-link {% if request.resolver_match.url_name == 'password_change' %}active{% endif %}">
-              <i class="fas fa-unlock-alt"></i>
-              <p>
-                {% trans 'تغییر رمز عبور' %}
-              </p>
-            </a>
-          </li>
-          {% if not user.is_special_user %}
-          <li class="nav-item">
-            <a href="" class="nav-link">
-              <i class="fas fa-user-tag"></i>
-              <p>
-                {% trans 'خرید اشتراک ویژه' %}
-              </p>
-            </a>
-          </li>
-          {% endif %}
-          <li class="nav-item">
-              <a href="{% url 'account:logout' %}" class="nav-link">
-                  <i class="fas fa-sign-out-alt"></i>
-                  <p>{% trans 'خروج' %}</p>
-              </a>
-          </li>
-        </ul>
-      </nav>
-      <!-- /.sidebar-menu -->
+      <div class="info">
+        <a href="#" class="d-block">{{ user.get_full_name }}</a>
+      </div>
     </div>
-    <!-- /.sidebar -->
-  </aside>
+
+    <!-- Sidebar Menu -->
+    <nav class="mt-2">
+      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <!-- Add icons to the links using the .nav-icon class
+              with font-awesome or any other icon font library -->
+      {% if user.is_superuser or user.is_author %}
+        <li class="nav-item has-treeview menu-open">
+          <a href="#" class="nav-link">
+            <i class="fas fa-copy"></i>
+            <p>
+              {% trans 'مقالات' %}
+              <i class="right fas fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="{% url 'account:home' %}" class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}">
+                <i class="fa fa-list nav-icon"></i>
+                <p>{% trans 'لیست مقالات' %}</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{% url 'account:article-create' %}" class="nav-link {% if request.resolver_match.url_name == 'article-create' %}active{% endif %}">
+                <i class="fa fa-edit nav-icon"></i>
+                <p>{% trans 'افزودن مقاله' %}</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+      {% endif %}
+        <li class="nav-item">
+          <a href="{% url 'account:profile' %}" class="nav-link {% if request.resolver_match.url_name == 'profile' %}active{% endif %}">
+            <i class="fa fa-user-circle"></i>
+            <p>
+              {% trans 'پروفایل' %}
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{% url 'password_change' %}" class="nav-link {% if request.resolver_match.url_name == 'password_change' %}active{% endif %}">
+            <i class="fas fa-unlock-alt"></i>
+            <p>
+              {% trans 'تغییر رمز عبور' %}
+            </p>
+          </a>
+        </li>
+        {% if not user.is_special_user %}
+        <li class="nav-item">
+          <a href="" class="nav-link">
+            <i class="fas fa-user-tag"></i>
+            <p>
+              {% trans 'خرید اشتراک ویژه' %}
+            </p>
+          </a>
+        </li>
+        {% endif %}
+        <li class="nav-item">
+            <a href="{% url 'account:logout' %}" class="nav-link">
+                <i class="fas fa-sign-out-alt"></i>
+                <p>{% trans 'خروج' %}</p>
+            </a>
+        </li>
+      </ul>
+    </nav>
+    <!-- /.sidebar-menu -->
+  </div>
+  <!-- /.sidebar -->
+</aside>

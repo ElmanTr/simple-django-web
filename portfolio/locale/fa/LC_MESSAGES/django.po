@@ -40,7 +40,7 @@ msgstr ""
 
 #: .\comment\apps.py:8
 msgid "comment"
-msgstr ""
+msgstr "نظر"
 
 #: .\comment\conf\defaults.py:11
 msgid "Spam | Exists only to promote a service"
@@ -52,7 +52,7 @@ msgstr ""
 
 #: .\comment\forms.py:19
 msgid "email"
-msgstr ""
+msgstr "ایمیل"
 
 #: .\comment\forms.py:21
 msgid "email address, this will be used for verification."
@@ -147,7 +147,7 @@ msgstr ""
 
 #: .\comment\templates\comment\comments\comment_content.html:18
 msgid "Edited"
-msgstr ""
+msgstr "ویرایش شده"
 
 #: .\comment\templates\comment\comments\comment_content.html:18
 #, python-format
@@ -169,7 +169,7 @@ msgstr ""
 
 #: .\comment\templates\comment\comments\create_comment.html:31
 msgid "Login"
-msgstr ""
+msgstr "ورود"
 
 #: .\comment\templates\comment\comments\create_comment.html:33
 msgid "to keep your conversations intact"
@@ -194,7 +194,7 @@ msgstr ""
 #: .\comment\templates\comment\flags\flag_modal.html:8
 #: .\templates\admin\submit_line.html:12
 msgid "Close"
-msgstr ""
+msgstr "بستن"
 
 #: .\comment\templates\comment\flags\flag_modal.html:22
 msgid "Flag"
@@ -206,11 +206,11 @@ msgstr ""
 
 #: .\comment\templates\comment\reactions\reactions.html:5
 msgid "like"
-msgstr ""
+msgstr "لایک"
 
 #: .\comment\templates\comment\reactions\reactions.html:16
 msgid "dislike"
-msgstr ""
+msgstr "دیسلایک"
 
 #: .\comment\utils.py:96
 msgid "Comment App: LOGIN_URL is not in the settings"
@@ -252,7 +252,7 @@ msgstr ""
 
 #: .\templates\admin\404.html:4 .\templates\admin\404.html:8
 msgid "Page not found"
-msgstr ""
+msgstr "صفحه مورد نظر پیدا نشد"
 
 #: .\templates\admin\404.html:10
 msgid "We’re sorry, but the requested page could not be found."
@@ -383,7 +383,7 @@ msgstr ""
 
 #: .\templates\admin\base.html:55
 msgid "Log out"
-msgstr ""
+msgstr "خروج"
 
 #: .\templates\admin\base_site.html:3
 msgid "Django site admin"
@@ -435,7 +435,7 @@ msgstr ""
 #: .\templates\admin\submit_line.html:7
 #: .\templates\admin\widgets\related_widget_wrapper.html:25
 msgid "Delete"
-msgstr ""
+msgstr "حذف"
 
 #: .\templates\admin\delete_confirmation.html:24
 #, python-format
@@ -549,7 +549,7 @@ msgstr ""
 
 #: .\templates\admin\login.html:63
 msgid "Log in"
-msgstr ""
+msgstr "ورود"
 
 #: .\templates\admin\nav_sidebar.html:2
 msgid "Toggle navigation"
@@ -694,4 +694,4 @@ msgstr ""
 
 #: .\templates\registration\logged_out.html:12
 msgid "Log in again"
-msgstr ""
+msgstr "ورود دوباره"

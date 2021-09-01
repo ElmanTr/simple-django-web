@@ -133,9 +133,11 @@ class SearchList(ListView):
 
     def get_queryset(self):
         search = self.request.GET.get('search')
-        post1 = Data.objects.published().filter(title__icontains=search)
-        post2 = Data.objects.published().filter(paragraph__icontains=search)
-        post = post1 | post2
+        post1 = Data.objects.published().filter(title_fa__icontains=search)
+        post11 = Data.objects.published().filter(title_en__icontains=search)
+        post2 = Data.objects.published().filter(paragraph_fa__icontains=search)
+        post22 = Data.objects.published().filter(paragraph_en__icontains=search)
+        post = post1 | post11 | post2 | post22
         return post
 
     def get_context_data(self, **kwargs):
